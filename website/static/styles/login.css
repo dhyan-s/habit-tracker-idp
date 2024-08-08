@@ -10,6 +10,10 @@ body {
   background: linear-gradient(135deg, #f79d00, #64f38c); 
 }
 
+p {
+  display: inline;
+}
+
 .container {
   display: flex;
   justify-content: center;
@@ -67,5 +71,5 @@ body {
 }
 
 .divider {
-  margin: 0 5px;
+  margin: 0 20px;
 }
