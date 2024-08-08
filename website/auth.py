@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template
 
+# TODO: put all into one blueprint, auth
 login = Blueprint("login", __name__)
 sign_up = Blueprint("sign_up", __name__)
 forgot_pwd = Blueprint("forgot_pwd", __name__)
