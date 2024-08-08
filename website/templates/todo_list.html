@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>|To do List</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/todolist.css')}}">
+</head>
+<body>
+
+  <body>
+    <header id="nav">
+            <h1 class="top">Habit Tracker</h1>
+    
+            <div class="topnav">
+                <a class="active" href="Habit_Tracker.html">Track Habit </a>
+                <a href="#news">News</a>
+                <a href="To do list.html">To Do List</a>
+                <a href="#about">About</a>
+              </div>
+    </header>
+
+    
+    <div id="myDIV" class="header">
+        <h2 style="margin:5px">My To Do List</h2>
+        <input type="text" id="myInput" placeholder="Title...">
+        <span onclick="newElement()" class="addBtn">Add</span>
+      </div>
+      
+      <ul id="myUL">
+        <li>Hit the gym</li>
+        <li class="checked">Pay bills</li>
+        <li>Meet George</li>
+        <li>Read a book</li>
+        <li>fight </li>
+      </ul>
+    <script src="to do list.js"></script>
+</body>
+</html>
