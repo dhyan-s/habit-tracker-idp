@@ -12,21 +12,26 @@
         <p>Please fill in this form to create an account.</p>
         <hr>
 
-        <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="email" id="email" required>
+        <form action="{{url_for('sign_up.sign_up')}}" method="post">
+            <label for="firstname"><b>First Name</b></label>
+            <input type="text" placeholder="Enter First Name" name="firstname" id="firstname" required>
 
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="email" id="email" required>
 
-        <label for="psw-repeat"><b>Repeat Password</b></label>
-        <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
-        <hr>
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
 
-        <p>By creating an account you agree to our <a href="#">Terms & Conditions</a>.</p>
-        <a href="{{url_for('home.homepage')}}">
-        <button type="submit" class="registerbtn">Register</button>
-        </a>
-        <p style="margin-bottom: -5px;">Already have an account? <a href="{{url_for('login.loginpage')}}">Log in</a></p>
+            <label for="psw-repeat"><b>Repeat Password</b></label>
+            <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
+            <hr>
+            
+            <p>By creating an account you agree to our <a href="#">Terms & Conditions</a>.</p>
+            <a href="{{url_for('home.homepage')}}">
+                <button type="submit" class="registerbtn">Register</button>
+            </a>
+        </form>
+        <p style="margin-bottom: -5px;">Already have an account? <a href="{{url_for('login.login')}}">Log in</a></p>
     </div>
 
 </body>
