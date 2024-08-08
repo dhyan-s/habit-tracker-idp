@@ -1,6 +1,6 @@
 from flask import Flask
 from .homepage import home
-from .auth import login, sign_up
+from .auth import login, sign_up, forgot_pwd
 from .todolist import todolist
 
 def create_app():
@@ -11,5 +11,6 @@ def create_app():
     app.register_blueprint(login, url_prefix="/login/")
     app.register_blueprint(sign_up, url_prefix="/signup/")
     app.register_blueprint(todolist, url_prefix="/todolist/")
+    app.register_blueprint(forgot_pwd, url_prefix="/fp/")
     
     return app

@@ -2,6 +2,7 @@ from flask import Blueprint, render_template
 
 login = Blueprint("login", __name__)
 sign_up = Blueprint("sign_up", __name__)
+forgot_pwd = Blueprint("forgot_pwd", __name__)
 
 
 @login.route('/')
@@ -11,3 +12,7 @@ def loginpage():
 @sign_up.route('/')
 def signup_page():
     return render_template("sign_up.html")
+
+@forgot_pwd.route('/')
+def fp_page():
+    return render_template("forgot_pwd.html")
