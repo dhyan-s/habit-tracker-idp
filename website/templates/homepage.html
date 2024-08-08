@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/homepage.css')}}">
+{% endblock %}
+
+{% block body %}
+    <button id="create-habit-btn">Create Habit (+)</button>
+
+    <div class="create-habit-form">
+        <div class="field">
+            <label for="habit-name-entry">Name of the Habit:</label>
+            <input type="text">
+        </div>
+        
+        <div class="field">
+            <label for="habit-days-div">Days:</label>
+            <div id="habit-days-div" style="display: inline;">
+                <button id="add-day-btn">+</button>
+            </div>
+        </div>
+
+        <div class="field">
+            <label for="habit-name-entry">Forever:</label>
+            
+            <label for="yes">Yes</label>
+            <input id="yes" name="forever" type="radio">
+
+            <label for="no">No</label>
+            <input id="no" type="radio" name="forever">
+        </div>
+
+        <div class="field">
+            <label for="habit-name-entry">Name of the Habit:</label>
+            <input type="text">
+        </div>
+
+        <div class="field">
+            <label for="habit-name-entry">Name of the Habit:</label>
+            <input type="text">
+        </div>
+
+        <div class="field">
+            <label for="habit-name-entry">Name of the Habit:</label>
+            <input type="text">
+        </div>
+
+        <div class="field">
+            
+        </div>
+
+        <div class="field">
+            
+        </div>
+    </div>
+
+    <script src="{{url_for('static', filename='index.js')}}"></script>
+{% endblock %}
