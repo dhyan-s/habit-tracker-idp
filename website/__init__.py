@@ -17,19 +17,16 @@ def create_database(app):
             print("Created Database!")        
             
 def register_blueprints(app):
-    from .auth import login_bp, signup_bp, forgotpwd_bp, logout_bp
+    from .auth import auth
     
     app.register_blueprint(home, url_prefix="/")
-    app.register_blueprint(login_bp, url_prefix="/login/")
-    app.register_blueprint(signup_bp, url_prefix="/signup/")
+    app.register_blueprint(auth, url_prefix="/")
     app.register_blueprint(todolist, url_prefix="/todolist/")
-    app.register_blueprint(forgotpwd_bp, url_prefix="/fp/")
-    app.register_blueprint(logout_bp, url_prefix="/logout/")
-    
+
 def create_login_manager(app):
     from .models import User
     login_manager = LoginManager()
-    login_manager.login_view = 'login.login'
+    login_manager.login_view = 'auth.login'
     login_manager.init_app(app)
     
     @login_manager.user_loader

@@ -3,14 +3,10 @@ from .models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_required, login_user, logout_user
 
-# TODO: put all into one blueprint, auth
-login_bp = Blueprint("login", __name__)
-signup_bp = Blueprint("sign_up", __name__)
-forgotpwd_bp = Blueprint("forgot_pwd", __name__)
-logout_bp = Blueprint("logout", __name__)
+auth = Blueprint("auth", __name__)
 
 
-@login_bp.route('/', methods=['GET', 'POST'])
+@auth.route('/login/', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         email = request.form.get('email')
@@ -28,7 +24,7 @@ def login():
             flash("Email does not exist", category="error")
     return render_template("login.html")
 
-@signup_bp.route('/', methods=['GET', 'POST'])
+@auth.route('/signup/', methods=['GET', 'POST'])
 def sign_up():
     from . import db    
     
@@ -58,12 +54,12 @@ def sign_up():
             return redirect(url_for('home.homepage'))
     return render_template("sign_up.html")
 
-@forgotpwd_bp.route('/')
+@auth.route('/forgot_pwd/')
 def forgot_pwd():
     return render_template("forgot_pwd.html")
 
-@logout_bp.route("/")
+@auth.route("/logout/")
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('login.login'))
+    return redirect(url_for('auth.login'))

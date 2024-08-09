@@ -12,7 +12,7 @@
         <p>Please fill in this form to create an account.</p>
         <hr>
 
-        <form action="{{ url_for('sign_up.sign_up') }}" method="post">
+        <form action="{{ url_for('auth.sign_up') }}" method="post">
             <label for="firstname"><b>First Name</b></label>
             <input type="text" placeholder="Enter First Name" name="firstname" id="firstname" required>
 
@@ -29,6 +29,6 @@
             <p>By creating an account you agree to our <a href="#">Terms & Conditions</a>.</p>
             <button type="submit" class="registerbtn">Register</button>
         </form>
-        <p style="margin-bottom: -5px;">Already have an account? <a href="{{ url_for('login.login') }}">Log in</a></p>
+        <p style="margin-bottom: -5px;">Already have an account? <a href="{{ url_for('auth.login') }}">Log in</a></p>
     </div>
 {% endblock %}
