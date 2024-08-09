@@ -1,6 +1,13 @@
 var createHabitBtn = document.getElementById('create-habit-btn');
 var popupForm = document.getElementById('popup-form');
 
+var datesDiv = document.getElementById("dates");
+var foreverRadioYes = document.getElementById('forever-yes');
+var foreverRadioNo = document.getElementById('forever-no');
+
+console.log('datesDiv:', datesDiv);
+console.log('foreverRadioYes:', foreverRadioYes);
+console.log('foreverRadioNo:', foreverRadioNo);
 
 function showPopup() {
     Swal.fire({
@@ -29,6 +36,20 @@ function showPopup() {
         }
     });
 }
+
+
+function toggleDatePrompt(val) {
+    console.log('here');
+    if (val == "yes") {
+        datesDiv.style.display = "block";
+    }
+    else if (val == "no") {
+        datesDiv.style.display = "none";
+    }
+}
+
+// foreverRadioYes.addEventListener('change', function () { toggleDatePrompt("yes"); });
+// foreverRadioNo.addEventListener('change', function () { toggleDatePrompt("no"); });
 
 document.addEventListener('DOMContentLoaded', function() {
     createHabitBtn.addEventListener('click', function() {

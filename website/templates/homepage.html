@@ -6,6 +6,7 @@
 
 {% block head %}
     <link rel="stylesheet" href="{{url_for('static', filename='styles/homepage.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/habit_popup.css')}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Madimi+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Underdog&display=swap" rel="stylesheet">
@@ -37,19 +38,41 @@
                 <label for="habit-name">Habit Name:</label>
                 <input type="text" id="habit-name" name="habit-name" required>
 
-                <label for="time-limit">Time Limit (in hours):</label>
-                <input type="number" id="time-limit" name="time-limit" required>
+                <label for="notes">Notes</label>
+                <textarea id="notes" name="notes"></textarea>
 
-                <label for="Note">Add Note</label>
-                <input type="text" id="Note" name="Note">
+                <label>Forever</label>
+                <label class="forever-radio-label">
+                    <input type="radio" name="forever" value="yes" id="forever-yes" onclick="toggleDatePrompt('yes')" required>
+                    Yes
+                </label>
+                <label class="forever-radio-label">
+                    <input type="radio" name="forever" value="no" id="forever-no" onclick="toggleDatePrompt('no')" required>
+                    No
+                </label>
+                <div id="dates">
+                    <label>Start Date: <input type="date" name="start-date"></label>
+                    <label>End Date: <input type="date" name="end-date"></label>
+                </div>
 
-                <label for="habit-name">Habit Name:</label>
-                <input type="text" id="habit-name" name="habit-name" required>
+                <label for="days">Days</label>
+                <label class="days-label"><input type="checkbox" value="mon" name="mon"> Mon</label>
+                <label class="days-label"><input type="checkbox" value="tue" name="tue"> Tue</label>
+                <label class="days-label"><input type="checkbox" value="wed" name="wed"> Wed</label>
+                <label class="days-label"><input type="checkbox" value="thu" name="thu"> Thu</label>
+                <label class="days-label"><input type="checkbox" value="fri" name="fri"> Fri</label>
+                <label class="days-label"><input type="checkbox" value="sat" name="sat"> Sat</label>
+                <label class="days-label"><input type="checkbox" value="sun" name="sun"> Sun</label>
 
-                <label for="Days">Days</label>
-                <input type="text" id="Days" name="Days" required>
-
-                <!-- <button type="submit" class="submit-btn">Submit</button> -->
+                <label>Reminder</label>
+                <label class="reminder-radio-label">
+                    <input type="radio" name="reminder" value="yes" id="reminder-yes" required>
+                    Yes
+                </label>
+                <label class="reminder-radio-label">
+                    <input type="radio" name="reminder" value="no" id="reminder-no" required>
+                    No
+                </label>
             </form>
         </div>
     </main>
