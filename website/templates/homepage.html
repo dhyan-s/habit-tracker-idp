@@ -54,33 +54,6 @@
         </div>
     </main>
 
-    <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <script>
-        function showPopup() {
-            Swal.fire({
-                title: "Create New Habit",
-                html: document.getElementById('popup-form').innerHTML,
-                showCloseButton: true,
-                showCancelButton: true,
-                focusConfirm: false,
-                showConfirmButton: false,
-                cancelButtonText: 'Cancel',
-                icon: 'info',
-                preConfirm: () => {
-                    // You can add form validation or handling here if needed
-                    return {
-                        habitName: document.getElementById('habit-name').value,
-                        timeLimit: document.getElementById('time-limit').value
-                    };
-                }
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Process the form data as needed
-                    console.log(result.value); // Replace with your form submission logic
-                }
-            });
-        }
-    </script>
+    <script src="{{url_for('static', filename='homepage.js')}}"></script>
 {%endblock%}

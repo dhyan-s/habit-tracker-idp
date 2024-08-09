@@ -1,5 +1,35 @@
 let windowWidth = window.innerWidth
 
+
+
+function showPopup() {
+    Swal.fire({
+        title: "Create New Habit",
+        html: document.getElementById('popup-form').innerHTML,
+        showCloseButton: true,
+        showCancelButton: true,
+        focusConfirm: false,
+        showConfirmButton: false,
+        cancelButtonText: 'Cancel',
+        icon: 'info',
+        preConfirm: () => {
+            // You can add form validation or handling here if needed
+            return {
+                habitName: document.getElementById('habit-name').value,
+                timeLimit: document.getElementById('time-limit').value
+            };
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Process the form data as needed
+            console.log(result.value); // Replace with your form submission logic
+        }
+    });
+}
+
+
+
+
 document.addEventListener('DOMContentLoaded', function() {
     var createHabitBtn = document.getElementById('create-habit-btn');
     var habitForm = document.getElementById('habit-form');
