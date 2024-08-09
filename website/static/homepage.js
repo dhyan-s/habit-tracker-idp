@@ -1,5 +1,5 @@
-let windowWidth = window.innerWidth
-
+var createHabitBtn = document.getElementById('create-habit-btn');
+var popupForm = document.getElementById('popup-form');
 
 
 function showPopup() {
@@ -9,7 +9,8 @@ function showPopup() {
         showCloseButton: true,
         showCancelButton: true,
         focusConfirm: false,
-        showConfirmButton: false,
+        showConfirmButton: true,
+        confirmButtonText: "Submit",
         cancelButtonText: 'Cancel',
         icon: 'info',
         preConfirm: () => {
@@ -21,49 +22,18 @@ function showPopup() {
         }
     }).then((result) => {
         if (result.isConfirmed) {
-            // Process the form data as needed
-            console.log(result.value); // Replace with your form submission logic
+            popupForm.style.display = 'none'
+        }  
+        else if (result.dismiss) {
+            popupForm.style.display = 'none';
         }
     });
 }
 
-
-
-
 document.addEventListener('DOMContentLoaded', function() {
-    var createHabitBtn = document.getElementById('create-habit-btn');
-    var habitForm = document.getElementById('habit-form');
-
     createHabitBtn.addEventListener('click', function() {
+        showPopup();
         // Toggle the display of the habit form
-        if (habitForm.style.display === 'none' || habitForm.style.display === '') {
-            habitForm.style.display = 'block';
-        } else {
-            habitForm.style.display = 'none';
-        }
-    });
-
-    habitForm.addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent the form from submitting
-        
-        // Retrieve input values
-        var habitName = document.getElementById('habit-name').value;
-        var timeLimit = document.getElementById('time-limit').value;
-
-        // Log the values (you can do further processing here)
-        console.log('Habit Name:', habitName);
-        console.log('Time Limit:', timeLimit);
-
-        // Optional: Clear the form fields after submission
-        habitForm.reset();
-
-        // Hide the form after submission (optional)
-        habitForm.style.display = 'none';
-    });
+        popupForm.style.display = 'block';
+    })
 });
-
-// function ResponsiveNavbar() {
-//     let navbar = document.getElementById("nav");
-
-//     if windowWidth 
-// }
