@@ -2,6 +2,7 @@ from tracemalloc import start
 from flask import Blueprint, request, jsonify
 from flask_login import current_user
 from .models import Habit
+from datetime import datetime
 
 habit_control = Blueprint("habit_routes", __name__)
 
@@ -14,8 +15,8 @@ def create_habit():
     habit_name = data.get('habitName')
     notes = data.get('notes')
     forever = bool(data.get('forever') == 'yes')
-    start_date = data.get('startDate')
-    end_date = data.get('endDate')
+    start_date = datetime(*[int(item) for item in data.get('startDate').split("-")]) if data.get('startDate') else None
+    end_date = datetime(*[int(item) for item in data.get('endDate').split("-")]) if data.get('endDate') else None
     days = " ".join(data.get('days'))
     reminder = bool(data.get('reminder') == 'yes')
     
@@ -36,5 +37,19 @@ def create_habit():
     return jsonify({'message': 'Habit created successfully!', 'habit_name': habit_name})
 
 
-# @habit_control.route("/get_habit")
-
+@habit_control.route("/delete_habit", methods=['POST'])
+def delete_habit():
+    from . import db
+    habit_id = int(request.data.decode('utf-8'))
+    habit = Habit.query.get(habit_id)
+    
+    if habit is None:
+        return jsonify({"error": "Habit not found"}), 404
+    
+    try:
+        db.session.delete(habit)
+        db.session.commit()
+        return jsonify({"message": "Habit deleted successfully"}), 200
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"error": str(e)}), 500

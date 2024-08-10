@@ -15,9 +15,19 @@ class Habit(db.Model):
     name = db.Column(db.String(150))
     notes = db.Column(db.String(10000))
     forever = db.Column(db.Boolean)
-    start_date = db.Column(db.String(10))
-    end_date = db.Column(db.String(10))
+    start_date = db.Column(db.DateTime, nullable=True)
+    end_date = db.Column(db.DateTime, nullable=True)
     days = db.Column(db.String(50))
     reminder = db.Column(db.Boolean)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     
+    completions = db.relationship('HabitCompletion', back_populates='habit', cascade="all, delete-orphan")
+    
+class HabitCompletion(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    habit_id = db.Column(db.Integer, db.ForeignKey('habit.id'), nullable=False)
+    date = db.Column(db.DateTime, nullable=False)
+    completed = db.Column(db.Boolean, default=False)
+    completion_notes = db.Column(db.String(500))
+
+    habit = db.relationship('Habit', back_populates='completions')
