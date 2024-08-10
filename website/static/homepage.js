@@ -1,13 +1,17 @@
 var createHabitBtn = document.getElementById('create-habit-btn');
 var popupForm = document.getElementById('popup-form');
 
-var datesDiv = document.getElementById("dates");
-var foreverRadioYes = document.getElementById('forever-yes');
-var foreverRadioNo = document.getElementById('forever-no');
-
-console.log('datesDiv:', datesDiv);
-console.log('foreverRadioYes:', foreverRadioYes);
-console.log('foreverRadioNo:', foreverRadioNo);
+const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 2000,
+    timerProgressBar: false,
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    }
+  });
 
 function getDateAsStr() {
     const today = new Date();
@@ -37,6 +41,7 @@ function showPopup() {
         },
         preConfirm: () => {
             const habitName = Swal.getPopup().querySelector('#habit-name').value;
+            const notes = Swal.getPopup().querySelector('#notes').value;
             const foreverYes = Swal.getPopup().querySelector('#forever-yes');
             const foreverNo = Swal.getPopup().querySelector('#forever-no');
             const startDate = Swal.getPopup().querySelector("input[name='start-date']").value;
@@ -55,7 +60,7 @@ function showPopup() {
                 Swal.showValidationMessage('Please select if the habit is forever or not');
                 return false;
             }
-            else if (foreverYes.checked && !endDate) {
+            else if (!foreverYes.checked && !endDate) {
                 Swal.showValidationMessage('Please choose an end date');
             }
 
@@ -77,6 +82,7 @@ function showPopup() {
 
             return {
                 habitName: habitName,
+                notes: notes,
                 forever: foreverYes.checked ? 'yes' : 'no',
                 startDate: startDate,
                 endDate: endDate,
@@ -87,28 +93,34 @@ function showPopup() {
     }).then((result) => {
         if (result.isConfirmed) {
             popupForm.style.display = 'none'
-            console.log(result.value); // Handle the form data here
+            fetch('/create_habit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(result.value)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                Toast.fire({
+                  icon: "success",
+                  title: `Habit Created: ${data['habit_name']}`
+                });
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                Toast.fire({
+                    icon: "error",
+                    title: "There was an issue creating the habit"
+                  });
+            });
         }  
         else if (result.dismiss) {
             popupForm.style.display = 'none'
         }
     });
 }
-
-
-
-function toggleDatePrompt(val) {
-    console.log('here');
-    if (val == "yes") {
-        datesDiv.style.display = "block";
-    }
-    else if (val == "no") {
-        datesDiv.style.display = "none";
-    }
-}
-
-// foreverRadioYes.addEventListener('change', function () { toggleDatePrompt("yes"); });
-// foreverRadioNo.addEventListener('change', function () { toggleDatePrompt("no"); });
 
 document.addEventListener('DOMContentLoaded', function() {
     createHabitBtn.addEventListener('click', function() {
