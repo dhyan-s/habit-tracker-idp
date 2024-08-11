@@ -172,7 +172,7 @@ header ul {
 
 
 
-#habit-details {
+.habit-details {
     margin-top: 20px;
     background-color: linear-gradient(to right, #5f22df 0%, #5f22df 100%);
     padding: 15px;
@@ -182,12 +182,12 @@ header ul {
     transition: max-height 0.5s ease-out;
 }
 
-#habit-details.open {
+.habit-details.open {
     max-height: 500px;
     transition: max-height 0.5s ease-in;
 }
 
-#habit-count {
+.habit-count-label {
     text-align: center;
     font-size: 1.1em;
     font-weight: bold;
@@ -234,7 +234,7 @@ header ul {
     background-color: #81d4fa;
 }
 
-#habit-info {
+.habit-info {
     margin-top: 15px;
     background-color: #ffffff;
     padding: 10px;
@@ -242,7 +242,7 @@ header ul {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-#habit-info p {
+.habit-info p {
     margin: 5px 0;
     color: #00796b;
 }
@@ -279,7 +279,7 @@ header ul {
     font-size: 12px;
 }
 
-#habit-details {
+.habit-details {
     margin-top: 20px;
     background-color: white;
     padding: 15px;
@@ -289,13 +289,13 @@ header ul {
     transition: max-height 1s ease-out;
 }
 
-#habit-details.open {
+.habit-details.open {
     max-height: 500px;
     transition: max-height 1s ease-in;
 }
 
 
-#habit-count {
+.habit-count-label {
     text-align: center;
     font-size: 1.1em;
     font-weight: bold;
@@ -346,7 +346,7 @@ header ul {
     background-color: #81d4fa;
 }
 
-#habit-info {
+.habit-info {
     margin-top: 15px;
     background-color: #ffffff;
     padding: 10px;
@@ -354,7 +354,7 @@ header ul {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-#habit-info p {
+.habit-info p {
     margin: 5px 0;
     color: #00796b;
 }

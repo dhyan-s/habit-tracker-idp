@@ -32,29 +32,24 @@
             </div>
    
     <div class="navbar">
-        <img class="navbarPFP" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxVEqJm-fBlKhipquuZ2o4QC8XBW6KUkhyND3MUrfZRwZbSh-Xzy66cQ3QpxADMIf9jrY&usqp=CAU">
-        <span class="menu-trigger">Pranav GOAT</span>
+        <img class="navbarPFP" src="{{url_for('static', filename='images/user.png')}}">
+        <span class="menu-trigger">Guest</span>
     </div>
     <div class="side-menu" id="sideMenu">
         <div class="profile-section">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxVEqJm-fBlKhipquuZ2o4QC8XBW6KUkhyND3MUrfZRwZbSh-Xzy66cQ3QpxADMIf9jrY&usqp=CAU" alt="Profile Picture" class="profile-pic">
-            <p class="titleForSideMenu">Pranav G</p>
+            <img src="{{url_for('static', filename='images/user.png')}}" alt="Profile Picture" class="profile-pic">
+            <p class="titleForSideMenu">Guest</p>
             <a href="#" class="viewProfile">View profile</a>
         </div>
         <ul>
+            <li><a href="#">Home</a></li>
+            <hr>
             <li><a href="#">Account Settings</a></li>
             <hr>
             <li><a href="#">Today</a></li>
             <hr>
-            <li><a href="#">Habit Tracker</a></li>
-            <hr>
-            <li><a href="#">Statistics</a></li>
-            <hr>
-            <li><a href="#">Archives</a></li>
-            <hr>
-            <li><a href="#">Community</a></li>
-            <hr>
-            <li><a href="#">Quickstart Guide</a></li>
+            <li><a href="#">Weekly Progress</a></li>
+            <!-- <hr> -->
         </ul>
     </div>
 
@@ -72,10 +67,10 @@
     
         <div class="content">
             <div class="card" onclick="openHabitInfo()">
-                <h3>Exercise</h3>
-                <p>Go to gym for 1 hour a day</p>
-                <div id="habit-details" class="hidden">
-                    <p id="habit-count">Times Completed: 25</p>
+                <h3 class="habit-title">Exercise</h3>
+                <p class="habit-notes">Go to gym for 1 hour a day</p>
+                <div class="habit-details hidden">
+                    <p class="habit-count-label">Times Completed: <span class="habit-count">20</span></p>
                     <div id="calendar">
                         <div class="week">
                             <div class="day completed">Mon</div>
@@ -87,10 +82,8 @@
                             <div class="day completed">Sun</div>
                         </div>
                     </div>
-                    <div id="habit-info">
-                        <p>Goal: 30 days streak</p>
+                    <div class="habit-info">
                         <p>Last completed: Yesterday</p>
-                        <p>Next target: 7-day streak</p>
                     </div>
                 </div>
             </div>

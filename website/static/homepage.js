@@ -1,5 +1,5 @@
 function toggleHabitDetails() {
-    var detailsDiv = document.getElementById("habit-details");
+    var detailsDiv = document.getElementsByClassName("habit-details")[0];
     if (detailsDiv.classList.contains("hidden")) {
         detailsDiv.classList.remove("hidden");
         detailsDiv.classList.add("open");
@@ -32,7 +32,7 @@ document.getElementById('overlay').addEventListener('click', function() {
 });
 
 function openHabitInfo() {
-    var detailsDiv = document.getElementById("habit-details");
+    var detailsDiv = document.getElementsByClassName("habit-details")[0];
     if (detailsDiv.classList.contains("hidden")) {
         detailsDiv.classList.remove("hidden");
         detailsDiv.classList.add("open");
