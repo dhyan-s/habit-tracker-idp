@@ -67,8 +67,8 @@
             <span class="tab" id="archiveTab">Archive</span>
         </div>
     
-        <div class="content">
-            <div class="card" onclick="openHabitInfo()">
+        <div id="content">
+            <div class="card" style="display: none;">
                 <h3 class="habit-title">Exercise</h3>
                 <p class="habit-notes">Go to gym for 1 hour a day</p>
                 <div class="habit-details hidden">
@@ -106,11 +106,11 @@
 
                 <label>Forever</label>
                 <label class="forever-radio-label">
-                    <input type="radio" name="forever" value="yes" id="forever-yes" onclick="toggleDatePrompt('yes')" required>
+                    <input type="radio" name="forever" value="yes" id="forever-yes" onclick="" required>
                     Yes
                 </label>
                 <label class="forever-radio-label">
-                    <input type="radio" name="forever" value="no" id="forever-no" onclick="toggleDatePrompt('no')" required>
+                    <input type="radio" name="forever" value="no" id="forever-no" onclick="" required>
                     No
                 </label>
                 <div id="dates">
@@ -151,8 +151,8 @@
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="{{url_for('static', filename='homepage.js')}}"></script>
-    <script src="{{url_for('static', filename='habit_popup.js')}}"></script>
+    <script type="module" src="{{url_for('static', filename='homepage.js')}}"></script>
+    <script type="module" src="{{url_for('static', filename='habit_popup.js')}}"></script>
 
 </div>
 

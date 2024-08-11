@@ -1,3 +1,5 @@
+import { displayHabit } from "./homepage.js";
+
 var createHabitBtn = document.getElementById('create-habit-btn');
 var popupForm = document.getElementById('popup-form');
 
@@ -105,8 +107,9 @@ function showPopup() {
                 console.log('Success:', data);
                 Toast.fire({
                   icon: "success",
-                  title: `Habit Created: ${data['habit_name']}`
+                  title: `Habit Created: ${data['name']}`
                 });
+                displayHabit(data);
             })
             .catch((error) => {
                 console.error('Error:', error);

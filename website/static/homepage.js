@@ -31,8 +31,9 @@ document.getElementById('overlay').addEventListener('click', function() {
     document.getElementById('overlay').classList.remove('visible');
 });
 
-function openHabitInfo() {
-    var detailsDiv = document.getElementsByClassName("habit-details")[0];
+function openHabitInfo(event) {
+    var currentDiv = event.currentTarget;
+    var detailsDiv = currentDiv.getElementsByClassName("habit-details")[0];
     if (detailsDiv.classList.contains("hidden")) {
         detailsDiv.classList.remove("hidden");
         detailsDiv.classList.add("open");
@@ -40,4 +41,17 @@ function openHabitInfo() {
         detailsDiv.classList.add("hidden");
         detailsDiv.classList.remove("open");
     }
+}
+
+export function displayHabit(habitData) {
+    const originalDiv = document.getElementsByClassName("card")[0];
+    const clonedDiv = originalDiv.cloneNode(true);
+    const contentDiv = document.getElementById("content");
+    clonedDiv.onclick = openHabitInfo
+    clonedDiv.style.display = "block";
+
+    clonedDiv.querySelector(".habit-title").textContent = habitData.name;
+    clonedDiv.querySelector(".habit-notes").textContent = habitData.notes;
+
+    contentDiv.appendChild(clonedDiv);
 }
