@@ -1,7 +1,8 @@
 from flask import Blueprint, request, jsonify
 from flask_login import current_user
-from .models import Habit
-from datetime import datetime
+from .models import Habit, HabitCompletion
+from .utils import weekday_from_date
+from datetime import datetime, timedelta
 
 habit_control = Blueprint("habit_routes", __name__)
 
@@ -19,21 +20,25 @@ def create_habit():
     days = " ".join(data.get('days'))
     reminder = bool(data.get('reminder') == 'yes')
     
-    new_habit = Habit(
-        name=habit_name,
-        notes=notes,
-        forever=forever,
-        start_date=start_date,
-        end_date=end_date,
-        days=days,
-        reminder=reminder,
-        user_id=current_user.id
-    )
+    habit_dict = {
+        'name': habit_name,
+        'notes': notes,
+        'forever': forever,
+        'start_date': start_date,
+        'end_date': end_date,
+        'days': days,
+        'reminder': reminder,
+        'user_id': current_user.id
+    }
+    
+    new_habit = Habit(**habit_dict)
     
     db.session.add(new_habit)
     db.session.commit()
     
-    return jsonify({'message': 'Habit created successfully!', 'habit_name': habit_name})
+    habit_dict = {'id': new_habit.id, **habit_dict}
+    
+    return jsonify(habit_dict)
 
 
 @habit_control.route("/delete_habit", methods=['POST'])
@@ -52,3 +57,32 @@ def delete_habit():
     except Exception as e:
         db.session.rollback()
         return jsonify({"error": str(e)}), 500
+
+
+@habit_control.route("/get_weekly_completion")
+def get_weekly_completion():
+    habit_id = request.args.get('habit_id', default='', type=str)
+    if not habit_id:
+        return jsonify({})
+    habit_id = int(habit_id)
+    
+    today = datetime.now()
+    start_of_week = today - timedelta(days=today.weekday())
+    end_of_week = start_of_week + timedelta(days=6)
+    
+    completions = HabitCompletion.query.filter(
+        HabitCompletion.habit_id == habit_id,
+        HabitCompletion.date >= start_of_week,
+        HabitCompletion.date <= end_of_week,
+    ).all()
+    
+    habit = Habit.query.get(habit_id)
+    all_days = habit.days.split()
+    
+    weekly_completion = {day: False for day in all_days}
+    completed_days = [weekday_from_date(completion.date) for completion in completions]
+    for day in completed_days:
+        weekly_completion[day] = True
+        
+    return jsonify(weekly_completion) # TODO: Continue
+    
