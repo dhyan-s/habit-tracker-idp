@@ -6,6 +6,9 @@
 
 {% block head %}
     <link rel="stylesheet" href="{{url_for('static', filename='styles/homepage.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Grey+Qo&family=Luckiest+Guy&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{url_for('static', filename='styles/habit_popup.css')}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,24 +17,87 @@
 
 
 {%block content%}
+<body>
+    
+
     <header id="nav">
-        <h1 class="top">Habit Tracker</h1>
-
-        <div class="topnav">
-            <a class="active" href="{{url_for('home.homepage')}}">Track Habit</a>
-            <a href="{{url_for('todolist.todolist_page')}}">To Do List</a>
-            <a href="#about">About</a>
-            <a href="{{url_for('auth.logout')}}">Logout</a>
+        <div id="navbar">
+            <div id="navbar-left">
+                <h1 class="title">Habit Tracker</h1>
+                <input type="text" id="search-input" placeholder="  Search" onclick="toggleSearchResults()">
+            </div>
+            <div id="navbar-center">
+            </div>
+            <div id="navbar-right">
+            </div>
+   
+    <div class="navbar">
+        <img class="navbarPFP" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxVEqJm-fBlKhipquuZ2o4QC8XBW6KUkhyND3MUrfZRwZbSh-Xzy66cQ3QpxADMIf9jrY&usqp=CAU">
+        <span class="menu-trigger">Pranav GOAT</span>
+    </div>
+    <div class="side-menu" id="sideMenu">
+        <div class="profile-section">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxVEqJm-fBlKhipquuZ2o4QC8XBW6KUkhyND3MUrfZRwZbSh-Xzy66cQ3QpxADMIf9jrY&usqp=CAU" alt="Profile Picture" class="profile-pic">
+            <p class="titleForSideMenu">Pranav G</p>
+            <a href="#" class="viewProfile">View profile</a>
         </div>
+        <ul>
+            <li><a href="#">Account Settings</a></li>
+            <hr>
+            <li><a href="#">Today</a></li>
+            <hr>
+            <li><a href="#">Habit Tracker</a></li>
+            <hr>
+            <li><a href="#">Statistics</a></li>
+            <hr>
+            <li><a href="#">Archives</a></li>
+            <hr>
+            <li><a href="#">Community</a></li>
+            <hr>
+            <li><a href="#">Quickstart Guide</a></li>
+        </ul>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
     </header>
-
+<div class="full-selection">
     <main>
-        <section class="button-section">
-            <button id="create-habit-btn" class="button">
-                Create New Habit+
-            </button>
-        </section>
 
+
+        <div class="tabs">
+            <span class="tab active" id="todayTab">Today</span>
+            <span class="tab" id="archiveTab">Archive</span>
+        </div>
+    
+        <div class="content">
+            <div class="card" onclick="openHabitInfo()">
+                <h3>Exercise</h3>
+                <p>Go to gym for 1 hour a day</p>
+                <div id="habit-details" class="hidden">
+                    <p id="habit-count">Times Completed: 25</p>
+                    <div id="calendar">
+                        <div class="week">
+                            <div class="day completed">Mon</div>
+                            <div class="day">Tue</div>
+                            <div class="day completed">Wed</div>
+                            <div class="day">Thu</div>
+                            <div class="day">Fri</div>
+                            <div class="day">Sat</div>
+                            <div class="day completed">Sun</div>
+                        </div>
+                    </div>
+                    <div id="habit-info">
+                        <p>Goal: 30 days streak</p>
+                        <p>Last completed: Yesterday</p>
+                        <p>Next target: 7-day streak</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    
         <!-- Form Section -->
         <div id="popup-form" style="display: none;">
             <form id="habit-form" class="habit-form">
@@ -81,9 +147,19 @@
                 </label>
             </form>
         </div>
+
+        <section class="button-section">
+            <button id="create-habit-btn" class="button">
+                Create New Habit +
+            </button>
+        </section>    
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{url_for('static', filename='homepage.js')}}"></script>
     <script src="{{url_for('static', filename='habit_popup.js')}}"></script>
+
+</div>
+
+</body>
 {%endblock%}
