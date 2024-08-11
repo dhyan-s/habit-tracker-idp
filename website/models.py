@@ -27,7 +27,6 @@ class HabitCompletion(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     habit_id = db.Column(db.Integer, db.ForeignKey('habit.id'), nullable=False)
     date = db.Column(db.DateTime, nullable=False)
-    completed = db.Column(db.Boolean, default=False)
-    completion_notes = db.Column(db.String(500))
+    completion_notes = db.Column(db.String(5000))
 
     habit = db.relationship('Habit', back_populates='completions')

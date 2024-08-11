@@ -1,4 +1,3 @@
-from tracemalloc import start
 from flask import Blueprint, request, jsonify
 from flask_login import current_user
 from .models import Habit
