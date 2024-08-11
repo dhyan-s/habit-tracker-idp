@@ -33,12 +33,12 @@
    
     <div class="navbar">
         <img class="navbarPFP" src="{{url_for('static', filename='images/user.png')}}">
-        <span class="menu-trigger">Guest</span>
+        <span class="menu-trigger">{{user.firstname}}</span>
     </div>
     <div class="side-menu" id="sideMenu">
         <div class="profile-section">
             <img src="{{url_for('static', filename='images/user.png')}}" alt="Profile Picture" class="profile-pic">
-            <p class="titleForSideMenu">Guest</p>
+            <p class="titleForSideMenu">{{user.firstname}}</p>
             <a href="#" class="viewProfile">View profile</a>
         </div>
         <ul>
@@ -49,7 +49,9 @@
             <li><a href="#">Today</a></li>
             <hr>
             <li><a href="#">Weekly Progress</a></li>
-            <!-- <hr> -->
+            <hr>
+            <li><a href="{{url_for('auth.logout')}}">Logout</a></li>
+            <hr>
         </ul>
     </div>
 
