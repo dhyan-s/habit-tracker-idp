@@ -1,4 +1,5 @@
-import { createHabitDiv } from "./homepage.js";
+import { HabitDisplayManager } from "./habit.js";
+import {homepageHabitManager } from "./homepage.js";
 
 var createHabitBtn = document.getElementById('create-habit-btn');
 var popupForm = document.getElementById('popup-form');
@@ -109,7 +110,7 @@ function showPopup() {
                   icon: "success",
                   title: `Habit Created: ${data['name']}`
                 });
-                createHabitDiv(data);
+                homepageHabitManager.displayNewHabit(data);
             })
             .catch((error) => {
                 console.error('Error:', error);

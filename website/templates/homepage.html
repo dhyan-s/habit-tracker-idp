@@ -66,7 +66,7 @@
     
         <div id="content">
             <div class="card" style="display: none;">
-                <img src="../static/images/gym.png" class="habitTrackerImage" title="gym icons">
+                <img src="{{url_for('static', filename='images/no_icon.png')}}" class="habitTrackerImage" title="gym icons">
                 <h3 class="habit-title">Exercise</h3>
                 <p class="habit-notes">Go to gym for 1 hour a day</p>
                 <div class="habit-details hidden">
@@ -156,6 +156,7 @@
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="{{url_for('static', filename='habit.js')}}"></script>
     <script type="module" src="{{url_for('static', filename='utils.js')}}"></script>
     <script type="module" src="{{url_for('static', filename='homepage.js')}}"></script>
     <script type="module" src="{{url_for('static', filename='habit_popup.js')}}"></script>
