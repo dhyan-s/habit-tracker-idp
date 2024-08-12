@@ -65,7 +65,9 @@
 
     
         <div id="content">
-            <div class="card" style="display: none;">
+            <h2 class="headingMyHabits">My Habits</h2>
+            <div class="card">
+                <img src="../static/images/bin.png" class="bin" alt="">
                 <img src="../static/images/gym.png" class="habitTrackerImage" title="gym icons">
                 <h3 class="habit-title">Exercise</h3>
                 <p class="habit-notes">Go to gym for 1 hour a day</p>
@@ -139,6 +141,13 @@
                     No
                 </label>
             </form>
+        </div>
+
+        <div class="todo-container">
+            <h3>To-Do List</h3>
+            <input type="text" id="taskInput" placeholder="Enter a task...">
+            <button id="addTaskButton">Add</button>
+            <ul id="taskList"></ul>
         </div>
 
         <section class="button-section">

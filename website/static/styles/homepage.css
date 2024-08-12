@@ -1,6 +1,6 @@
 main {
     background-color: #fcf7e4;
-    height: 600px;
+    height: 800px;
 }
 
 body {
@@ -68,8 +68,8 @@ header ul {
     padding: 15px 30px;
     cursor: pointer;
     transition: all 0.3s ease;
-    position: relative;
-    margin-top: 280px;
+    position: absolute;
+
 }
 
 .button:active {
@@ -168,7 +168,6 @@ header ul {
 }
 
 .habit-details {
-    margin-top: 20px;
     background-color: linear-gradient(to right, #5f22df 0%, #5f22df 100%);
     padding: 15px;
     border-radius: 10px;
@@ -182,11 +181,76 @@ header ul {
     transition: max-height 0.5s ease-in;
 }
 
+.todo-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 250px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.todo-container h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    text-align: center;
+}
+
+#taskInput {
+    width: calc(100% - 60px);
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+#addTaskButton {
+    width: 50px;
+    padding: 8px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#addTaskButton:hover {
+    background-color: #218838;
+}
+
+#taskList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+}
+
+.task-item input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.task-item.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
 .habit-count-label {
     text-align: center;
     font-size: 1.1em;
     font-weight: bold;
     color: black;
+}
+
+.headingMyHabits{
+    width: 100%;
 }
 
 #calendar {
@@ -206,7 +270,6 @@ header ul {
 }
 
 .habit-info {
-    margin-top: 15px;
     background-color: #ffffff;
     padding: 10px;
     border-radius: 10px;
@@ -214,7 +277,6 @@ header ul {
 }
 
 .habit-info p {
-    margin: 5px 0;
     color: #00796b;
 }
 
@@ -258,12 +320,21 @@ header ul {
 .habit-details.open {
     max-height: 500px;
     transition: max-height 1s ease-in;
+
+}
+
+.bin{
+    height: 17px;
+    width: 17px;
+    position: absolute;
+    margin-left: 240px;
 }
 
 .habit-count-label {
     text-align: center;
     font-size: 1.1em;
     font-weight: bold;
+    display: inline;
 }
 
 #calendar {
@@ -476,6 +547,5 @@ header ul {
     margin-top: 10px;
     font-size: 0.9em;
     color: #c2c2c2;
-    
     margin-left: 100px;
 }
