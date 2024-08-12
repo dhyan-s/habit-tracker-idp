@@ -1,5 +1,5 @@
 main {
-    background-color: #edf1f4;
+    background-color: #fcf7e4;
     height: 600px;
 }
 
@@ -88,7 +88,7 @@ header ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: white;
+    background-color: #fed480;
     padding: 10px 20px;
     color: black;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -448,10 +448,12 @@ header ul {
     width: 300px;
     padding: 20px;
     border-radius: 10px;
-    background: linear-gradient(135deg, #834dff, #00c6ff);
-    color: #fff;
+    background: white;
+    color: black;
+    font-weight: bold;
     cursor: pointer;
     transition: transform 0.2s ease;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .card:hover {
@@ -460,10 +462,11 @@ header ul {
 
 .card h3 {
     margin: 0;
-    font-size: 1.2em;
+    font-size: 30px;
 }
 
 .card p {
     margin-top: 10px;
     font-size: 0.9em;
+    color: #c2c2c2;
 }
