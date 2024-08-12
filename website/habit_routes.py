@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from flask_login import current_user
 from .models import Habit, HabitCompletion
-from .utils import weekday_from_date
+from .utils import weekday_from_date, weekday_no_from_str
 from datetime import datetime, timedelta
 
 habit_control = Blueprint("habit_routes", __name__)
@@ -77,12 +77,14 @@ def get_weekly_completion():
     ).all()
     
     habit = Habit.query.get(habit_id)
-    all_days = habit.days.split()
+    all_days = [weekday_no_from_str(day) for day in habit.days.split()]
+    today_weekday = today.weekday()
     
-    weekly_completion = {day: False for day in all_days}
-    completed_days = [weekday_from_date(completion.date) for completion in completions]
-    for day in completed_days:
-        weekly_completion[day] = True
+    weekly_completion = {day: None for day in all_days}
+    completed_days = [completion.date.weekday() for completion in completions]
+    
+    for day in all_days:
+        weekly_completion[day] = day in completed_days if day < today_weekday else None
         
     return jsonify(weekly_completion)
     

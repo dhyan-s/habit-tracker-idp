@@ -75,13 +75,13 @@
                     <p class="habit-count-label">Times Completed: <span class="habit-count">20</span></p>
                     <div id="calendar">
                         <div class="week">
-                            <div class="day mon completed">Mon</div>
-                            <div class="day mon">Tue</div>
-                            <div class="day mon completed">Wed</div>
-                            <div class="day mon">Thu</div>
-                            <div class="day mon missed">Fri</div>
-                            <div class="day mon">Sat</div>
-                            <div class="day upcoming">Sun</div>
+                            <div class="day mon">Mon</div>
+                            <div class="day tue">Tue</div>
+                            <div class="day wed">Wed</div>
+                            <div class="day thu">Thu</div>
+                            <div class="day fri">Fri</div>
+                            <div class="day sat">Sat</div>
+                            <div class="day sun">Sun</div>
                         </div>
                     </div>
                     <div class="habit-info">
@@ -151,6 +151,7 @@
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="{{url_for('static', filename='utils.js')}}"></script>
     <script type="module" src="{{url_for('static', filename='homepage.js')}}"></script>
     <script type="module" src="{{url_for('static', filename='habit_popup.js')}}"></script>
 
