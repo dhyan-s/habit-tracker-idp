@@ -24,6 +24,7 @@ header ul {
     display: inline;
 }
 
+
 .top {
     margin: 0;
     font-size: 36px;
@@ -56,6 +57,7 @@ header ul {
 .button-section {
     text-align: center;
     margin-top: 30px;
+    margin-right: 190px;
 }
 
 .button {
