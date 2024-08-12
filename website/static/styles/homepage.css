@@ -456,6 +456,12 @@ header ul {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.habitTrackerImage{
+    height: 80px;
+    width: 80px;
+    position: absolute;
+}
+
 .card:hover {
     transform: scale(1.05);
 }
@@ -463,10 +469,12 @@ header ul {
 .card h3 {
     margin: 0;
     font-size: 30px;
+    margin-left: 100px;
 }
 
 .card p {
     margin-top: 10px;
     font-size: 0.9em;
     color: #c2c2c2;
+    margin-left: 100px;
 }
