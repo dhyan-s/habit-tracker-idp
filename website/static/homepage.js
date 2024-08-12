@@ -97,3 +97,24 @@ export function createHabitDiv(habitData) {
 
     contentDiv.appendChild(clonedDiv);
 }
+
+
+function displayAllHabits() {
+    console.log('here')
+    // Remove all cards
+    const cards = document.getElementsByClassName("card");
+    for (let i=1; i<cards.length; i++) { // Spare the first invisible card to use as template
+        habitsDiv.remove(cards[i]);
+    }
+
+    fetch("/get_all_habits")
+    .then(response => response.json())
+    .then(habits => {
+        for (let habit of habits) {
+            createHabitDiv(habit);
+        }
+    })
+}
+
+
+document.addEventListener('DOMContentLoaded', displayAllHabits);

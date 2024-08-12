@@ -1,4 +1,5 @@
 from datetime import datetime
+from .models import Habit
 
 def weekday_from_date(date: datetime):
     weekday = date.weekday()
@@ -13,6 +14,7 @@ def weekday_from_date(date: datetime):
     }
     return weekday_dict[str(weekday)]
 
+
 def weekday_no_from_str(day: str):
     weekday_map = {
         'mon': 0,
@@ -24,3 +26,16 @@ def weekday_no_from_str(day: str):
         'sun': 6,
     }
     return weekday_map[day]
+
+def habit_class_to_dict(habit: Habit):
+    return {
+        'id': habit.id,
+        'name': habit.name,
+        'notes': habit.notes,
+        'forever': habit.forever,
+        'start_date': habit.start_date,
+        'end_date': habit.end_date,
+        'days': habit.days,
+        'reminder': habit.reminder,
+        'user_id': habit.user_id
+    }
