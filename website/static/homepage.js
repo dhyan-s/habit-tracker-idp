@@ -116,5 +116,29 @@ function displayAllHabits() {
     })
 }
 
+document.getElementById('addTaskButton').addEventListener('click', function() {
+    const taskInput = document.getElementById('taskInput');
+    const taskText = taskInput.value.trim();
+    
+    if (taskText !== '') {
+        const taskList = document.getElementById('taskList');
+
+        const li = document.createElement('li');
+        li.className = 'task-item';
+        
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.addEventListener('change', function() {
+            li.classList.toggle('completed');
+        });
+        
+        li.appendChild(checkbox);
+        li.appendChild(document.createTextNode(taskText));
+        taskList.appendChild(li);
+
+        taskInput.value = '';
+    }
+});
+
 
 document.addEventListener('DOMContentLoaded', displayAllHabits);
