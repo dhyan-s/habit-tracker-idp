@@ -84,5 +84,5 @@ def get_weekly_completion():
     for day in completed_days:
         weekly_completion[day] = True
         
-    return jsonify(weekly_completion) # TODO: Continue
+    return jsonify(weekly_completion)
     
