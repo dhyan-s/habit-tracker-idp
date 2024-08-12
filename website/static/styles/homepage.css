@@ -1,17 +1,15 @@
-main{
-    background-color:  #edf1f4;
+main {
+    background-color: #edf1f4;
     height: 600px;
-
 }
-body { 
+
+body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #333;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
 }
-
-
 
 header {
     background-color: #333;
@@ -55,7 +53,6 @@ header ul {
     transform: scale(1.05);
 }
 
-
 .button-section {
     text-align: center;
     margin-top: 30px;
@@ -83,7 +80,7 @@ header ul {
 
 .button:hover {
     background-color: #e55b5b;
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
     transform: scale(1.05);
 }
 
@@ -96,6 +93,7 @@ header ul {
     color: black;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
 #navbar-left {
     display: flex;
     align-items: center;
@@ -131,7 +129,6 @@ header ul {
     color: black;
     overflow: hidden;
 }
-
 
 .hidden {
     display: none;
@@ -170,8 +167,6 @@ header ul {
     color: #00796b;
 }
 
-
-
 .habit-details {
     margin-top: 20px;
     background-color: linear-gradient(to right, #5f22df 0%, #5f22df 100%);
@@ -208,40 +203,6 @@ header ul {
     display: flex;
     justify-content: space-around;
     width: 100%;
-
-}
-
-.day {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    background-color: #cfd8dc;
-    color: #455a64;
-    font-weight: bold;
-    transition: background-color 0.3s;
-
-}
-
-.day.completed {
-    background-color: #4caf50;
-    color: white;
-}
-
-.day.missed {
-    background-color: rgb(192, 0, 0);
-    color: white;
-}
-
-.day.upcoming {
-    background-color: #00daff;
-    color: white;
-}
-
-.day:hover {
-    background-color: #81d4fa;
 }
 
 .habit-info {
@@ -257,7 +218,7 @@ header ul {
     color: #00796b;
 }
 
-.weightlifter{
+.weightlifter {
     width: 40px;
 }
 
@@ -270,11 +231,6 @@ header ul {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     font-family: Arial, sans-serif;
     margin: 20px;
-}
-
-#habit-header {
-    cursor: pointer;
-    text-align: center;
 }
 
 #habit-header h3 {
@@ -304,7 +260,6 @@ header ul {
     transition: max-height 1s ease-in;
 }
 
-
 .habit-count-label {
     text-align: center;
     font-size: 1.1em;
@@ -321,20 +276,14 @@ header ul {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.week {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-}
-
-.habitName{
+.habitName {
     color: white;
 }
 
 .day {
     width: 40px;
     height: 30px;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
@@ -352,27 +301,23 @@ header ul {
     margin: 3px;
 }
 
+.day.missed {
+    background-color: rgb(192, 0, 0);
+    color: white;
+}
+
+.day.today {
+    background-color: yellow;
+    /* color: white; */
+}
+
 .day:hover {
     background-color: #81d4fa;
 }
 
-.habit-info {
-    margin-top: 15px;
-    background-color: #ffffff;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.habit-info p {
-    margin: 5px 0;
-    color: #00796b;
-}
-
-.title{
+.title {
     font-family: Arial, Helvetica, sans-serif;
 }
-
 
 .menu-trigger {
     cursor: pointer;
@@ -412,7 +357,7 @@ header ul {
     transition: color 0.3s ease;
 }
 
-.navbarPFP{
+.navbarPFP {
     margin-right: 5px;
     border-radius: 50%;
     width: 40px;
@@ -428,7 +373,7 @@ header ul {
     text-align: center;
 }
 
-.titleForSideMenu{
+.titleForSideMenu {
     font-size: 40px;
     font-weight: bold;
 }
@@ -464,8 +409,6 @@ header ul {
     z-index: 999;
 }
 
-
-
 .side-menu.open {
     right: 0;
 }
@@ -493,8 +436,6 @@ header ul {
     background-color: #e0e0e0;
     font-weight: bold;
 }
-
-
 
 #content {
     padding: 20px;
