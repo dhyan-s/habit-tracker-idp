@@ -2,7 +2,7 @@ from flask import Flask
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 import os
-from .views import home, todolist, review_progress
+from .views import home, review_progress
 
 db = SQLAlchemy()
 DB_NAME = "database.db"
@@ -21,7 +21,6 @@ def register_blueprints(app):
     
     app.register_blueprint(home, url_prefix="/")
     app.register_blueprint(auth, url_prefix="/")
-    app.register_blueprint(todolist, url_prefix="/todolist/")
     app.register_blueprint(habit_control, url_prefix="/")
     app.register_blueprint(review_progress, url_prefix="/review_prog/")
 

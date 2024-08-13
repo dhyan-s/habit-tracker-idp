@@ -3,7 +3,6 @@ from flask_login import login_required, current_user
 
 home = Blueprint("home", __name__)
 review_progress = Blueprint("review_progress", __name__)
-todolist = Blueprint("todolist", __name__)
 
 
 @home.route("/")
@@ -15,8 +14,3 @@ def homepage():
 @review_progress.route("/")
 def review_page():
     return render_template("review.html")
-
-
-@todolist.route("/")
-def todolist_page():
-    return render_template("todo_list.html")
