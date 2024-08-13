@@ -19,11 +19,13 @@ def create_database(app):
 def register_blueprints(app):
     from .auth import auth
     from .habit_routes import habit_control
+    from .review import review_progress
     
     app.register_blueprint(home, url_prefix="/")
     app.register_blueprint(auth, url_prefix="/")
     app.register_blueprint(todolist, url_prefix="/todolist/")
     app.register_blueprint(habit_control, url_prefix="/")
+    app.register_blueprint(review_progress, url_prefix="/review_prog/")
 
 def create_login_manager(app):
     from .models import User
