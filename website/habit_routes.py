@@ -7,6 +7,16 @@ from datetime import datetime, timedelta
 habit_control = Blueprint("habit_routes", __name__)
 
 
+def validate_habit_id():
+    habit_id = request.args.get('habit_id', default='', type=str)
+    if not habit_id:
+        return jsonify({"error": "Habit ID not provided"}), 400
+    try:
+        return int(habit_id), 200
+    except ValueError:
+        return jsonify({"error": f"Invalid habit_id: {habit_id}"}), 400
+
+
 @habit_control.route("/create_habit", methods=['POST'])
 def create_habit():
     from . import db
@@ -112,3 +122,19 @@ def get_all_habits():
     habits = Habit.query.filter(Habit.user_id == current_user.id).all()
     habit_list = [habit_class_to_dict(habit) for habit in habits]
     return jsonify(habit_list)
+
+@habit_control.route("/get_last_completed")
+def get_last_completed():
+    habit_id = validate_habit_id()
+    if habit_id[1] != 200: # Check status code
+        return habit_id
+    
+    habit = Habit.query.get(habit)
+    
+    last_completed = HabitCompletion.query.filter_by(habit_id=habit_id).order_by(HabitCompletion.date.desc()).first()
+    
+    if last_completed:
+        return jsonify(last_completed.date.isoformat())
+    else:
+        return jsonify(None)
+    
