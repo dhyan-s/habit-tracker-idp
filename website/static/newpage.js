@@ -16,6 +16,8 @@ function switchTab(sectionId, tab) {
     tab.classList.add('active');
 }
 
+
+
 // Daily Check-in functionality
 document.querySelectorAll('.habit-checkbox').forEach(checkbox => {
     checkbox.addEventListener('change', function() {
