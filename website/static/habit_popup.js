@@ -130,6 +130,5 @@ document.addEventListener('DOMContentLoaded', function() {
     createHabitBtn.addEventListener('click', function() {
         showPopup();
         // Toggle the display of the habit form
-        popupForm.style.display = 'block';
     })
 });
