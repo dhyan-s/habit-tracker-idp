@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit Tracker - Full Review</title>
+    <link rel="stylesheet" href="../static/styles/newpage.css">
+</head>
+<body>
+    <div class="main-container">
+        <header>
+            <h1>Habit Tracker</h1>
+            <nav>
+                <button id="check-in-tab" class="tab active">Daily Check-in</button>
+                <button id="daily-tab" class="tab"></button>
+                <button id="weekly-tab" class="tab">Weekly Review</button>
+            </nav>
+        </header>
+        
+        <section id="check-in-section" class="content-section active">
+            <h2>Daily Check-in</h2>
+            <div class="check-in-container">
+                <section id="pending-habits">
+                    <h3>Pending Habits for the Day</h3>
+                    <ul class="habit-list" id="pending-list">
+                        <li>
+                            <label>
+                                <img src="{{url_for('static', filename='images/no_icon.png')}}" class="habitTrackerImage" title="gym icons">
+                                <input type="checkbox" class="habit-checkbox">
+                                <span class="habit-name">Drink 8 glasses of water</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <img src="{{url_for('static', filename='images/no_icon.png')}}" class="habitTrackerImage" title="gym icons">
+                                <input type="checkbox" class="habit-checkbox">
+                                <span class="habit-name">Read for 30 minutes</span>
+                            </label>
+                        </li>
+                        <!-- Add more habits as needed -->
+                    </ul>
+                </section>
+
+                <section id="completed-habits" class="hidden">
+                    <h3>Completed Habits for the Day</h3>
+                    <ul class="habit-list" id="completed-list">
+                        <!-- Completed habits will be moved here -->
+                    </ul>
+                </section>
+
+                <section id="daily-notes">
+                    <h3>Notes for the Day (optional)</h3>
+                    <textarea id="notes-input" placeholder="Write your notes here..."></textarea>
+                </section>
+            </div>
+        </section>
+
+        <section id="daily-review-section" class="content-section">
+            <h2>Daily Review</h2>
+            <div class="review-container">
+                <div class="habit-summary">
+                    <p>Habits completed: <span id="daily-completed">0</span>/5</p>
+                    <p>Notes: <textarea id="daily-notes-review"></textarea></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="weekly-review-section" class="content-section">
+            <h2>Weekly Review</h2>
+            <div class="review-container">
+                <div class="habit-summary">
+                    <p>Habits completed: <span id="weekly-completed">0</span>/35</p>
+                    <p>Overall Rating: 
+                        <select id="weekly-rating">
+                            <option value="1">1 - Poor</option>
+                            <option value="2">2 - Fair</option>
+                            <option value="3">3 - Good</option>
+                            <option value="4">4 - Very Good</option>
+                            <option value="5">5 - Excellent</option>
+                        </select>
+                    </p>
+                    <p>Notes: <textarea id="weekly-notes-review"></textarea></p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="../static/newpage.js"></script>
+</body>
+</html>

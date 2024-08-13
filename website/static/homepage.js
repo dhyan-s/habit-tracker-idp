@@ -65,4 +65,6 @@ document.getElementById('addTaskButton').addEventListener('click', function() {
     }
 });
 
+
+
 document.addEventListener('DOMContentLoaded', displayAllHabits);
