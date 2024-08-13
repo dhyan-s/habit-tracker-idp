@@ -65,6 +65,7 @@ document.getElementById('addTaskButton').addEventListener('click', function() {
     }
 });
 
+<<<<<<< HEAD
 const quotes = [
     "The only way to do great work is to love what you do. - Steve Jobs",
     "Innovation distinguishes between a leader and a follower. - Steve Jobs",
@@ -82,4 +83,6 @@ const quotes = [
     quoteElement.textContent = quotes[randomIndex];
    }
 
+=======
+>>>>>>> 2b6349929003b955870fad24fd0b9dd6b3030d00
 document.addEventListener('DOMContentLoaded', displayAllHabits);
