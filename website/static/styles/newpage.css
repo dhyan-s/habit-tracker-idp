@@ -1,0 +1,146 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e981fc;
+    margin: 0;
+    padding: 20px;
+}
+
+.main-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #82d6ff;
+}
+
+nav {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.tab {
+    background-color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    color: black;
+    font-size: 1.1em;
+}
+
+.tab.active, .tab:hover {
+    background-color: #82d6ff;
+    color: black;
+}
+
+.content-section {
+    display: none;
+    margin-top: 20px;
+}
+
+.content-section.active {
+    display: block;
+}
+
+.check-in-container, .review-container {
+    background: #82d6ff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    margin-top: 20px;
+}
+
+.habit-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.habit-list li {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+}
+
+.habit-list li:hover {
+    transform: scale(1.05);
+}
+
+.habit-checkbox {
+    margin-right: 15px;
+    transform: scale(1.5);
+    cursor: pointer;
+}
+
+.habit-name {
+    font-size: 1.2em;
+}
+
+.hidden {
+    display: none;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid #00c2cb;
+    background-color: white;
+    color: black;
+    font-family: inherit;
+    margin-top: 15px;
+    resize: none;
+}
+
+textarea::placeholder {
+    color: #a1a1a1;
+}
+
+select {
+    padding: 5px;
+    border-radius: 5px;
+    border: 2px solid #00c2cb;
+    background-color: #2c2f3a;
+    color: #f5f5f5;
+    font-family: inherit;
+}
+
+@media (max-width: 600px) {
+    .main-container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    .tab {
+        font-size: 1em;
+    }
+
+    .habit-list li {
+        padding: 8px;
+    }
+
+    .habit-checkbox {
+        transform: scale(1.2);
+    }
+}
