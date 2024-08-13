@@ -123,6 +123,11 @@ select {
     font-family: inherit;
 }
 
+.habitTrackerImage {
+    width: 30px;
+    height: 30px;
+}
+
 @media (max-width: 600px) {
     .main-container {
         padding: 15px;
