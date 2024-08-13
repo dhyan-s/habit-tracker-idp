@@ -11,10 +11,14 @@ export function weekdayStrFromNo(weekdayNo) {
     return weekdayMap[weekdayNo]
 }
 
-export function pythonToJSDay(dayNoFromPython) {
+export function pythonToJSDay(pythonDayNo) {
     // Python day index: mon=0, tue=1, ..., sun=6
     // JavaScript day index: sun=0, mon=1, ..., sat=6
     // Convert a python day index to JS day index
     
-    return (dayNoFromPython + 1) % 7;
+    return (pythonDayNo + 1) % 7;
+}
+
+export function JSToPythonDay(JSDayNo) {
+    return (JSDayNo + 6) % 7;
 }
