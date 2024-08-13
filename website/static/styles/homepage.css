@@ -103,6 +103,13 @@ header ul {
     align-items: center;
 }
 
+.expand-habit{
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    left: 270px;
+}
+
 #navbar-left h1 {
     margin: 0;
     font-size: 24px;
