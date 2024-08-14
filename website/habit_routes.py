@@ -145,7 +145,10 @@ def get_last_completed():
 def get_todays_habits(): # Returns with completion data as well
     todays_date = datetime.now().date()
     todays_day = todays_date.weekday()
-    todays_habits = Habit.query.filter(Habit.days.like(f"%{weekday_str_from_no(todays_day)}%")).all()
+    todays_habits = Habit.query.filter(
+        Habit.user_id == current_user.id,
+        Habit.days.like(f"%{weekday_str_from_no(todays_day)}%")
+        ).all()
     print(datetime.now(), todays_date, func.date(datetime.now()), todays_date == func.date(datetime.now()))
     todays_habits_data = []
     for habit in todays_habits:
