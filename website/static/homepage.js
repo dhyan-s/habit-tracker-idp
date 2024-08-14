@@ -7,28 +7,6 @@ document.getElementById('clear-tasks').addEventListener('click', function() {
     const taskList = document.getElementById('todo-list');
     taskList.innerHTML = '';
 });
-function popUpForInfo() {
-    Swal.fire({
-        title: "<strong>Habit Details <u>example</u></strong>",
-        icon: "info",
-        html: `
-         Habit Name: Gym
-         Habit Streak: 5 Days
-         Duration: Forever
-        `,
-        showCloseButton: true,
-        showCancelButton: true,
-        focusConfirm: false,
-        confirmButtonText: `
-          <i class="fa fa-thumbs-up"></i> Great!
-        `,
-        confirmButtonAriaLabel: "Thumbs up, great!",
-        cancelButtonText: `
-          <i class="fa fa-thumbs-down"></i>
-        `,
-        cancelButtonAriaLabel: "Thumbs down"
-      });
-}
 
 function openProfileMenu() {
     var profileMenu = document.getElementById("profile-menu");

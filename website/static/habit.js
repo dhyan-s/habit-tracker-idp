@@ -7,6 +7,7 @@ export class Habit {
         this.#templateDiv = templateDiv;
         this.habitData = habitData;
         this.parentDiv = parentDiv;
+        this.openHabitInfoPopup = this.openHabitInfoPopup.bind(this);
         this.createHabitDiv();
         this.hideHabitDiv();
     }
@@ -21,6 +22,39 @@ export class Habit {
             detailsDiv.classList.add("hidden");
             detailsDiv.classList.remove("open");
         }
+    }
+
+    openHabitInfoPopup(){
+        Swal.fire({
+            title: `<strong class="my-sweetalert-title">${this.habitData.name}</strong>`,
+            icon: "info",
+            html:
+            `<div class="expanded-habits-popup">
+                <p><b>Notes:</b><span> ${this.habitData.notes}</span></p>
+                <p><b>Forever:</b><span> ${this.habitData.forever ? 'Yes' : 'No'}</span></p>
+                <p><b>Start Date:</b><span class="started-on"> ${new Date(this.habitData.start_date).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' })}</span></p>
+                <p><b>End Date:</b><span class="ended-on"> ${this.habitData.end_date ? new Date(this.habitData.end_date).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' }) : 'N.A'}</span></p>
+                <p><b>Days:</b><span class="days"> ${this.habitData.days}</span></p>
+                <p><b>Reminder:</b><span class="reminder"> ${this.habitData.reminder ? 'Yes' : 'No'}</span></p>
+            </div>`,
+            showCloseButton: true,
+            showCancelButton: true,
+            focusConfirm: false,
+            confirmButtonText: `
+                Keep It Up!
+            `,
+            confirmButtonAriaLabel: "Thumbs up, Keep It Up!",
+            cancelButtonText: `
+                 Edit Habit!
+            `,
+            cancelButtonAriaLabel: "Edit Habit (Beta)",
+            customClass: {
+                confirmButton: 'my-sweetalert-confirm-button ',
+                cancelButton: 'my-sweetalert-cancel-button'
+            }
+        });
+        console.log(this.habitData);
+
     }
     
     updateHabitData() {
@@ -64,28 +98,13 @@ export class Habit {
                 }
             )
         })
-
-        // Update last completed
-        // const lastCompletedSpan = this.habitDiv.querySelector(".last-completed");
-        // fetch(`/get_last_completed?habit_id=${this.habit_id}`)
-        // .then(response => response.json())
-        // .then(data => {
-        //     if (data == null) {
-        //         lastCompletedSpan.textContent = "N.A";
-        //     }
-        //     else {
-        //         let lastCompletedDate = new Date(data);
-        //         const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-        //         const dayOfWeek = daysOfWeek[lastCompletedDate.getDay()];
-        //         let formattedDate = `${lastCompletedDate.getDate()}-${lastCompletedDate.getMonth() + 1}-${lastCompletedDate.getFullYear()} (${dayOfWeek})`;
-        //         lastCompletedSpan.textContent = formattedDate;
-        //     }
-        // })
     }
 
     createHabitDiv() {
         this.habitDiv = this.#templateDiv.cloneNode(true);
         this.habitDiv.onclick = this.openHabitInfo
+
+        this.habitDiv.querySelector(".habitImage").onclick = this.openHabitInfoPopup;
 
         this.updateHabitData(this.habitDiv, this.habitData);
 

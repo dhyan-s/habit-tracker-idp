@@ -96,38 +96,10 @@
         <div id="content">
             <div class="card" style="display: none;">
                 <img src="{{url_for('static', filename='images/no_icon.png')}}" class="habitTrackerImage" title="gym icons">
-                <style>
-                    /* Custom CSS for SweetAlert */
-                    .my-sweetalert-popup {
-                        background-color: #f5f5f5;
-                        border-radius: 10px;
-                        padding: 20px;
-                    }
-                    .my-sweetalert-title {
-                        color: #333;
-                        font-family: 'Arial', sans-serif;
-                        font-weight: bold;
-                    }
-                    .my-sweetalert-html {
-                        color: #666;
-                        font-family: 'Verdana', sans-serif;
-                        text-align: left;
-                    }
-                    .my-sweetalert-confirm-button {
-                        background-color: #4CAF50;
-                        color: white;
-                        border-radius: 5px;
-                    }
-                    .my-sweetalert-cancel-button {
-                        background-color: #f44336;
-                        color: white;
-                        border-radius: 5px;
-                    }
-                </style>
             </head>
             <body>
 
-            <img src="{{url_for('static', filename='images/expand-arrows.png')}}" onclick="swalFire()" class="habitImage" alt="Habit Image" style="cursor:pointer; height: 10px; width: 10px;margin-left: 250px;">
+            <img src="{{url_for('static', filename='images/expand-arrows.png')}}" class="habitImage" alt="Habit Image" style="cursor:pointer; height: 10px; width: 10px;margin-left: 250px;">
                 <h3 class="habit-title">Habit Title</h3>
                 <p class="habit-notes">Habit notes goes here</p>
                 <div class="habit-details hidden">
@@ -223,42 +195,6 @@
     <script type="module" src="{{url_for('static', filename='habit_popup.js')}}"></script>
 
 </div>
-
-<script>
-    // JavaScript to handle the SweetAlert
-        function swalFire(){
-          Swal.fire({
-            title: '<strong class="habit-details-sweetalert">Random</strong>',
-            icon: "info",
-            html:
-            '<div class="expanded-habits-popup">'+
-            '<p><b>Notes:</b><span> Feeling great about this habit!</span></p>'+
-            '<p><b>Forever:</b><span> Yes</span></p>'+
-                '<span><p><b>Started on:</b><span class="started-on"> 2024-07-01</span></p>' +
-                '<span><p><b>Ended on:</b><span class="ended-on"> 2024-07-01</span></p>'+
-                '<span><p><b>Days:</b><span class="days"> Monday, Tuesday, Wednesday</span></p>'+
-                '<span><p><b>Reminder:</b><spanclass="reminder"> Yes</span></p>'+
-            '</div>',
-            showCloseButton: true,
-            showCancelButton: true,
-            focusConfirm: false,
-            confirmButtonText: `
-                Keep It Up!
-            `,
-            confirmButtonAriaLabel: "Thumbs up, Keep It Up!",
-            cancelButtonText: `
-                 Edit Habit!
-            `,
-            cancelButtonAriaLabel: "Edit Habit",
-            customClass: {
-                confirmButton: 'my-sweetalert-confirm-button ',
-                cancelButton: 'my-sweetalert-cancel-button'
-            }
-        });
-
-    }
-</script> 
-
 
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
