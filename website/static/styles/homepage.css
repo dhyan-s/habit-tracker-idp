@@ -11,8 +11,6 @@ body {
     overflow-x: hidden;
 }
 
-
-
 header {
     background-color: #333;
     padding: 20px 0;
@@ -25,7 +23,6 @@ header {
 header ul {
     display: inline;
 }
-
 
 .top {
     margin: 0;
@@ -73,7 +70,6 @@ header ul {
     cursor: pointer;
     transition: all 0.3s ease;
     position: absolute;
-
 }
 
 .clear-btn {
@@ -87,7 +83,7 @@ header ul {
     margin-top: 10px;
 }
 
-#clearToDoList{
+#clearToDoList {
     color: red;
     text-decoration: underline;
 }
@@ -119,7 +115,7 @@ header ul {
     align-items: center;
 }
 
-.expand-habit{
+.expand-habit {
     width: 10px;
     height: 10px;
     position: absolute;
@@ -214,21 +210,9 @@ header ul {
     color: #999;
 }
 
-.clear-btn {
-    width: 100%;
-    padding: 8px;
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
 .checkbox {
     margin-right: 10px;
 }
-
 
 #user-icon {
     width: 40px;
@@ -256,20 +240,6 @@ header ul {
 #habit-header h3 {
     margin: 0;
     color: #00796b;
-}
-
-.habit-details {
-    background-color: linear-gradient(to right, #5f22df 0%, #5f22df 100%);
-    padding: 15px;
-    border-radius: 10px;
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.5s ease-out;
-}
-
-.habit-details.open {
-    max-height: 500px;
-    transition: max-height 0.5s ease-in;
 }
 
 .todo-container {
@@ -340,7 +310,7 @@ header ul {
     color: black;
 }
 
-.headingMyHabits{
+.headingMyHabits {
     width: 100%;
 }
 
@@ -369,6 +339,8 @@ header ul {
 
 .habit-info p {
     color: #00796b;
+    margin-left: 0 !important;
+    text-align: center;
 }
 
 .weightlifter {
@@ -398,8 +370,6 @@ header ul {
     font-size: 12px;
 }
 
-
-
 .habit-details {
     margin-top: 20px;
     background-color: white;
@@ -421,7 +391,7 @@ header ul {
     cursor: pointer;
 }
 
-#quote{
+#quote {
     font-size: 27px;
     font-family: "Dancing Script", cursive;
     font-optical-sizing: auto;
@@ -435,15 +405,14 @@ header ul {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 100%;
     text-align: center;
-   }
+}
 
 .habit-details.open {
     max-height: 500px;
     transition: max-height 1s ease-in;
-
 }
 
-.bin{
+.bin {
     height: 17px;
     width: 17px;
     position: absolute;
@@ -454,7 +423,8 @@ header ul {
     text-align: center;
     font-size: 1.1em;
     font-weight: bold;
-    display: inline;
+    display: block;
+    margin-left: 0 !important;
 }
 
 #calendar {
@@ -499,7 +469,8 @@ header ul {
 
 .day.today {
     background-color: yellow;
-    /* color: white; */
+    /* color: white;
+    */
 }
 
 .day:hover {
@@ -633,6 +604,7 @@ header ul {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
+    align-items: flex-start;
 }
 
 .card {
@@ -647,7 +619,7 @@ header ul {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.default-habit-icon{
+.default-habit-icon {
     height: 80px;
     width: 80px;
     position: absolute;
@@ -670,7 +642,8 @@ header ul {
     margin-left: 100px;
 }
 
-.expand-icon, .delete-icon {
+.expand-icon,
+.delete-icon {
     position: absolute;
     height: 15px;
     width: 15px;
@@ -683,12 +656,14 @@ header ul {
     transform: scale(1.05);
 }
 
-.delete-icon:hover, .expand-icon:hover {
+.delete-icon:hover,
+.expand-icon:hover {
     background-color: rgba(194, 194, 194, 0.5);
     border-radius: 5px;
 }
 
-.delete-icon:active, .expand-icon:active {
+.delete-icon:active,
+.expand-icon:active {
     background-color: transparent;
 }
 
@@ -697,21 +672,25 @@ header ul {
     border-radius: 10px;
     padding: 20px;
 }
+
 .my-sweetalert-title {
     color: #333;
     font-family: 'Arial', sans-serif;
     font-weight: bold;
 }
+
 .my-sweetalert-html {
     color: #666;
     font-family: 'Verdana', sans-serif;
     text-align: left;
 }
+
 .my-sweetalert-confirm-button {
     background-color: #4CAF50;
     color: white;
     border-radius: 5px;
 }
+
 .my-sweetalert-cancel-button {
     background-color: #f44336;
     color: white;
