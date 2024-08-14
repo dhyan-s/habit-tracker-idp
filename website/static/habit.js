@@ -1,5 +1,17 @@
 import {weekdayStrFromNo, pythonToJSDay, JSToPythonDay} from "./utils.js";
 
+const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 2000,
+    timerProgressBar: false,
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    }
+  });
+
 export class Habit {
     #templateDiv;
 
@@ -7,7 +19,10 @@ export class Habit {
         this.#templateDiv = templateDiv;
         this.habitData = habitData;
         this.parentDiv = parentDiv;
+
         this.openHabitInfoPopup = this.openHabitInfoPopup.bind(this);
+        this.deleteHabit = this.deleteHabit.bind(this);
+
         this.createHabitDiv();
         this.hideHabitDiv();
     }
@@ -22,6 +37,59 @@ export class Habit {
             detailsDiv.classList.add("hidden");
             detailsDiv.classList.remove("open");
         }
+    }
+
+    deleteHabit(event) {
+        event.stopPropagation();
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+                fetch("/delete_habit", {
+                    'method': 'POST',
+                    'headers': {'ContentType': "plain/text"},
+                    'body': this.habitData.id.toString()
+                })
+                .then(response => {
+                    let errorStyle = `'color: #c2c2c2; font-style: italic; color: red'`;
+                    if (!response.ok) {
+                        response.json().then(data => {
+                            console.error(data.error);
+                            Toast.fire({
+                                icon: 'error', // in html file
+                                title: `Could not Delete Habit:`,
+                                html: `<p style=${errorStyle}>${data.error}</p>`,
+                            });
+                        })
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    Toast.fire({
+                        iconHtml: trashIconUrl, // in html file
+                        title: `Habit Deleted: ${this.habitData.name}`,
+                        customClass: {
+                            icon: 'no-border'
+                        }
+                    });
+                    this.habitDiv.remove();
+                })
+                .catch(error => {
+                    Toast.fire({
+                        icon: 'error', // in html file
+                        title: `Could not Delete Habit:`,
+                        html: `<p style=${errorStyle}>${error.message}</p>`,
+                    });
+                    console.error(`Error Deleting Habit: ${error.message}`)
+                })
+            }
+          });
     }
 
     openHabitInfoPopup(event){
@@ -106,6 +174,7 @@ export class Habit {
         this.habitDiv.onclick = this.openHabitInfo
 
         this.habitDiv.querySelector(".expand-icon").onclick = this.openHabitInfoPopup;
+        this.habitDiv.querySelector(".delete-icon").onclick = this.deleteHabit;
 
         this.updateHabitData(this.habitDiv, this.habitData);
 

@@ -111,7 +111,7 @@ def get_habit_by_id():
     habit = Habit.query.get(habit_id)
     
     if habit is None:
-        return jsonify({"error": "Habit not found"}), 404
+        return jsonify({"error": "Habit not found."}), 404
     
     habit_data = habit_class_to_dict(habit)
     

@@ -717,3 +717,7 @@ header ul {
     color: white;
     border-radius: 5px;
 }
+
+.no-border {
+    border: 0;
+}
