@@ -76,6 +76,22 @@ header ul {
 
 }
 
+.clear-btn {
+    width: 100%;
+    padding: 8px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#clearToDoList{
+    color: red;
+    text-decoration: underline;
+}
+
 .button:active {
     background-color: #e55b5b;
     box-shadow: 0 5px #666;
@@ -149,6 +165,70 @@ header ul {
     display: flex;
     align-items: center;
 }
+
+.todo-container {
+    width: 250px;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+#todo-input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+#add-task {
+    width: 100%;
+    padding: 8px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#todo-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+#todo-list li {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    margin-bottom: 5px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#todo-list li.completed {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.clear-btn {
+    width: 100%;
+    padding: 8px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.checkbox {
+    margin-right: 10px;
+}
+
 
 #user-icon {
     width: 40px;

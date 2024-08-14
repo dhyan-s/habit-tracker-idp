@@ -102,6 +102,8 @@ export class Habit {
 }
 
 
+
+
 export class HabitDisplayManager {
     #templateDiv;
     constructor(templateDiv, parentDiv) {
