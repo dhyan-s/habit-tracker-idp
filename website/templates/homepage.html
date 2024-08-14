@@ -5,33 +5,20 @@
 {% endblock %}
 
 {% block head %}
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Grey+Qo&family=Luckiest+Guy&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Grey+Qo&family=Luckiest+Guy&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Grey+Qo&family=Luckiest+Guy&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Grey+Qo&family=Luckiest+Guy&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-    <!-- Loading Icons From Font Awesome -->
-    <link rel="stylesheet" 
-          href=
-"https://use.fontawesome.com/releases/v5.8.1/css/all.css" 
-          integrity=
-"sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" 
-          crossorigin="anonymous">
+    <!-- Icons From Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <!-- Roboto Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <!-- Open Sans Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet"> 
 
-    <!-- Linking Your CSS File -->
-    <link rel="stylesheet" href="style.css"/>
-
-    <!-- Loading Roboto Font from Google Fonts -->
-    <link href=
-"https://fonts.googleapis.com/css2?family=Roboto&display=swap" 
-          rel="stylesheet">
-
-    <!-- Loading Open Sans Font from Google Fonts -->
-    <link href=
-"https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" 
-          rel="stylesheet">
     <link rel="stylesheet" href="{{url_for('static', filename='styles/homepage.css')}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -44,9 +31,6 @@
 
 
 {%block content%}
-<body>
-    
-
     <header id="nav">
         <div id="navbar">
             <div id="navbar-left">
@@ -93,34 +77,34 @@
 
 
     
-        <div id="content">
-            <div class="card" style="display: none;">
-                <img src="{{url_for('static', filename='images/no_icon.png')}}" class="habitTrackerImage" title="gym icons">
-            </head>
-            <body>
-
-            <img src="{{url_for('static', filename='images/expand-arrows.png')}}" class="habitImage" alt="Habit Image" style="cursor:pointer; height: 10px; width: 10px;margin-left: 250px;">
-                <h3 class="habit-title">Habit Title</h3>
-                <p class="habit-notes">Habit notes goes here</p>
-                <div class="habit-details hidden">
-                    <p class="habit-count-label">Times Completed: <span class="habit-count">20</span></p>
-                    <div id="calendar">
-                        <div class="week">
-                            <div class="day mon">Mon</div>
-                            <div class="day tue">Tue</div>
-                            <div class="day wed">Wed</div>
-                            <div class="day thu">Thu</div>
-                            <div class="day fri">Fri</div>
-                            <div class="day sat">Sat</div>
-                            <div class="day sun">Sun</div>
+            <div id="content">
+                <div class="card" style="display: none; position: relative;"> <!-- Set the position to relative here -->
+                    <img src="{{url_for('static', filename='images/no_icon.png')}}" class="default-habit-icon" title="Default Habit Icon">
+                    <img src="{{url_for('static', filename='images/expand-arrows.png')}}" class="expand-icon" alt="Expand Icon">
+                    <img src="{{url_for('static', filename='images/delete.png')}}" class="delete-icon" alt="Delete Icon">
+            
+                    <h3 class="habit-title">Habit Title</h3>
+                    <p class="habit-notes">Habit notes goes here</p>
+                    <div class="habit-details hidden">
+                        <p class="habit-count-label">Times Completed: <span class="habit-count">20</span></p>
+                        <div id="calendar">
+                            <div class="week">
+                                <div class="day mon">Mon</div>
+                                <div class="day tue">Tue</div>
+                                <div class="day wed">Wed</div>
+                                <div class="day thu">Thu</div>
+                                <div class="day fri">Fri</div>
+                                <div class="day sat">Sat</div>
+                                <div class="day sun">Sun</div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="habit-info">
-                        <p>Last completed: <span class="last-completed">N.A</span></p>
+                        <div class="habit-info">
+                            <p>Last completed: <span class="last-completed">N.A</span></p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+            
 
 
     
@@ -198,6 +182,4 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-</body>
 {%endblock%}

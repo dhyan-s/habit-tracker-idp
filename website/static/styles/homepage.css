@@ -647,7 +647,7 @@ header ul {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.habitTrackerImage{
+.default-habit-icon{
     height: 80px;
     width: 80px;
     position: absolute;
@@ -668,6 +668,28 @@ header ul {
     font-size: 0.9em;
     color: #c2c2c2;
     margin-left: 100px;
+}
+
+.expand-icon, .delete-icon {
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    top: 10px;
+    right: 10px;
+}
+
+.delete-icon {
+    right: 35px;
+    transform: scale(1.05);
+}
+
+.delete-icon:hover, .expand-icon:hover {
+    background-color: rgba(194, 194, 194, 0.5);
+    border-radius: 5px;
+}
+
+.delete-icon:active, .expand-icon:active {
+    background-color: transparent;
 }
 
 .my-sweetalert-popup {

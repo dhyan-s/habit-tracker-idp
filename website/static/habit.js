@@ -24,7 +24,8 @@ export class Habit {
         }
     }
 
-    openHabitInfoPopup(){
+    openHabitInfoPopup(event){
+        event.stopPropagation();
         Swal.fire({
             title: `<strong class="my-sweetalert-title">${this.habitData.name}</strong>`,
             icon: "info",
@@ -104,7 +105,7 @@ export class Habit {
         this.habitDiv = this.#templateDiv.cloneNode(true);
         this.habitDiv.onclick = this.openHabitInfo
 
-        this.habitDiv.querySelector(".habitImage").onclick = this.openHabitInfoPopup;
+        this.habitDiv.querySelector(".expand-icon").onclick = this.openHabitInfoPopup;
 
         this.updateHabitData(this.habitDiv, this.habitData);
 
