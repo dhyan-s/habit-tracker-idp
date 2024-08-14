@@ -74,9 +74,7 @@
             <hr>
             <li><a href="#">Account Settings</a></li>
             <hr>
-            <li><a href="#">Today</a></li>
-            <hr>
-            <li><a href="#">Weekly Progress</a></li>
+            <li><a href="{{url_for('review_progress.review_page')}}">Review</a></li>
             <hr>
             <li><a href="{{url_for('auth.logout')}}">Logout</a></li>
             <hr>
@@ -130,8 +128,6 @@
             <body>
             
             <img src="{{url_for('static', filename='images/expand-arrows.png')}}" id="habitImage" alt="Habit Image" style="cursor:pointer; height: 10px; width: 10px;margin-left: 250px;">
-            
-           
                 <h3 class="habit-title">Habit Title</h3>
                 <p class="habit-notes">Habit notes goes here</p>
                 <div class="habit-details hidden">
