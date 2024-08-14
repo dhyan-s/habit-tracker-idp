@@ -617,6 +617,8 @@ header ul {
     cursor: pointer;
     transition: transform 0.2s ease;
     font-family: Arial, Helvetica, sans-serif;
+    max-height: 125px;
+    overflow: hidden;
 }
 
 .default-habit-icon {

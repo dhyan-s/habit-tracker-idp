@@ -33,11 +33,15 @@ export class Habit {
         var currentDiv = event.currentTarget;
         var detailsDiv = currentDiv.getElementsByClassName("habit-details")[0];
         if (detailsDiv.classList.contains("hidden")) {
+            currentDiv.style.maxHeight = "none";
             detailsDiv.classList.remove("hidden");
             detailsDiv.classList.add("open");
+            currentDiv.classList.add("expanded");
         } else {
+            currentDiv.style.maxHeight = "125px";
             detailsDiv.classList.add("hidden");
             detailsDiv.classList.remove("open");
+            currentDiv.classList.remove("expanded");
         }
     }
 
@@ -159,7 +163,7 @@ export class Habit {
                         dayDiv.classList.add("missed");
                     }
                     else if (dayNo == JSToPythonDay(new Date().getDay())) {
-                        // console.log(data['habit_name'], dayNo, new Date().getDay());
+                        // console.log(data['name'], dayNo, JSToPythonDay(new Date().getDay()));
                         dayDiv.classList.add("today");
                     }
                     else {
