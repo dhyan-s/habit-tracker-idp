@@ -96,7 +96,38 @@
         <div id="content">
             <div class="card" style="display: none;">
                 <img src="{{url_for('static', filename='images/no_icon.png')}}" class="habitTrackerImage" title="gym icons">
-                <img src="{{url_for('static', filename='images/expand-arrows.png')}}" class="expand-habit" title="gym icons">
+                <style>
+                    /* Custom CSS for SweetAlert */
+                    .my-sweetalert-popup {
+                        background-color: #f5f5f5;
+                        border-radius: 10px;
+                        padding: 20px;
+                    }
+                    .my-sweetalert-title {
+                        color: #333;
+                        font-family: 'Arial', sans-serif;
+                        font-weight: bold;
+                    }
+                    .my-sweetalert-html {
+                        color: #666;
+                        font-family: 'Verdana', sans-serif;
+                        text-align: left;
+                    }
+                    .my-sweetalert-confirm-button {
+                        background-color: #4CAF50;
+                        color: white;
+                        border-radius: 5px;
+                    }
+                    .my-sweetalert-cancel-button {
+                        background-color: #f44336;
+                        color: white;
+                        border-radius: 5px;
+                    }
+                </style>
+            </head>
+            <body>
+            
+            <img src="{{url_for('static', filename='images/expand-arrows.png')}}" id="habitImage" alt="Habit Image" style="cursor:pointer; height: 10px; width: 10px;margin-left: 250px;">
                 <h3 class="habit-title">Habit Title</h3>
                 <p class="habit-notes">Habit notes goes here</p>
                 <div class="habit-details hidden">
@@ -173,9 +204,10 @@
 
         <div class="todo-container">
             <h3>To-Do List</h3>
-            <input type="text" id="taskInput" placeholder="Enter a task...">
-            <button id="addTaskButton">Add</button>
-            <ul id="taskList"></ul>
+            <input type="text" id="todo-input" placeholder="Enter a task">
+            <button id="add-task">Add</button>
+            <ul id="todo-list"></ul>
+            <button id="clear-tasks" class="clear-btn">Clear All</button>
         </div>
 
         <section class="button-section">
@@ -184,7 +216,6 @@
             </button>
         </section>    
     </main>
-
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="module" src="{{url_for('static', filename='habit.js')}}"></script>
     <script type="module" src="{{url_for('static', filename='utils.js')}}"></script>
@@ -192,6 +223,42 @@
     <script type="module" src="{{url_for('static', filename='habit_popup.js')}}"></script>
 
 </div>
+
+<script>
+    // JavaScript to handle the SweetAlert
+    document.getElementById('habitImage').addEventListener('click', function() {
+        Swal.fire({
+            title: '<strong>Habit Details</strong>',
+            html:
+                '<p><b>Streak:</b> 10 days</p>' +
+                '<p><b>Duration:</b> 30 minutes/day</p>' +
+                '<p><b>Time Period:</b> 7:00 AM - 7:30 AM</p>' +
+                '<p><b>Started on:</b> 2024-07-01</p>' +
+                '<p><b>Total Time:</b> 5 hours</p>' +
+                '<p><b>Notes:</b> Feeling great about this habit!</p>',
+            imageUrl: '../static/images/expand-arrows.png',
+            imageWidth: 100,
+            imageHeight: 100,
+            imageAlt: 'Habit Image',
+            showCloseButton: true,
+            showCancelButton: true,
+            focusConfirm: false,
+            confirmButtonText: 'Keep it up!',
+            cancelButtonText: 'Edit Habit',
+            customClass: {
+                popup: 'my-sweetalert-popup',
+                title: 'my-sweetalert-title',
+                htmlContainer: 'my-sweetalert-html',
+                confirmButton: 'my-sweetalert-confirm-button',
+                cancelButton: 'my-sweetalert-cancel-button'
+            }
+        });
+    });
+</script> 
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>
 {%endblock%}

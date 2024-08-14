@@ -3,6 +3,10 @@ import {Habit, HabitDisplayManager} from "./habit.js";
 
 export const homepageHabitManager = new HabitDisplayManager(document.getElementsByClassName("card")[0], document.getElementById("content"));
 
+document.getElementById('clear-tasks').addEventListener('click', function() {
+    const taskList = document.getElementById('todo-list');
+    taskList.innerHTML = '';
+});
 function popUpForInfo() {
     Swal.fire({
         title: "<strong>Habit Details <u>example</u></strong>",
@@ -38,6 +42,7 @@ function closeProfileMenu() {
     profileMenu.classList.add("hidden");
 }
 
+
 document.querySelector('.menu-trigger').addEventListener('click', function() {
     document.getElementById('sideMenu').classList.toggle('open');
     document.getElementById('overlay').classList.toggle('visible');
@@ -64,29 +69,34 @@ function displayAllHabits() {
     })
 }
 
-document.getElementById('addTaskButton').addEventListener('click', function() {
-    const taskInput = document.getElementById('taskInput');
-    const taskText = taskInput.value.trim();
-    
-    if (taskText !== '') {
-        const taskList = document.getElementById('taskList');
-
-        const li = document.createElement('li');
-        li.className = 'task-item';
+document.getElementById('add-task').addEventListener('click', function() {
+    const taskInput = document.getElementById('todo-input');
+    const taskValue = taskInput.value.trim();
+    if (taskValue) {
+        const taskList = document.getElementById('todo-list');
+        const newTask = document.createElement('li');
         
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
-        checkbox.addEventListener('change', function() {
-            li.classList.toggle('completed');
-        });
-        
-        li.appendChild(checkbox);
-        li.appendChild(document.createTextNode(taskText));
-        taskList.appendChild(li);
+        checkbox.className = 'checkbox';
 
+        checkbox.addEventListener('click', function() {
+            newTask.classList.toggle('completed');
+        });
+
+        newTask.appendChild(checkbox);
+        newTask.appendChild(document.createTextNode(taskValue));
+        taskList.appendChild(newTask);
         taskInput.value = '';
     }
 });
+
+document.getElementById('clear-tasks').addEventListener('click', function() {
+    const taskList = document.getElementById('todo-list');
+    taskList.innerHTML = '';
+});
+
+
 
 const quotes = [
     "The only way to do great work is to love what you do. - Steve Jobs",
