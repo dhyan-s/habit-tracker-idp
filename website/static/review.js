@@ -1,3 +1,5 @@
+import { DailyHabit } from "./daily_review.js";
+
 // Tab switching functionality
 document.getElementById('check-in-tab').addEventListener('click', function() {
     switchTab('check-in-section', this);
@@ -16,22 +18,23 @@ function switchTab(sectionId, tab) {
     tab.classList.add('active');
 }
 
-// Daily Check-in functionality
-document.querySelectorAll('.habit-checkbox').forEach(checkbox => {
-    checkbox.addEventListener('change', function() {
-        if (this.checked) {
-            const habitName = this.nextElementSibling.textContent;
-            const note = prompt(`Add a note for "${habitName}" (optional):`);
-            const completedList = document.getElementById('completed-list');
-            const newHabit = document.createElement('li');
-            newHabit.innerHTML = `<span class="habit-name">${habitName}</span><br><small>${note ? note : ''}</small>`;
-            completedList.appendChild(newHabit);
-
-            this.closest('li').remove();
-
-            if (completedList.children.length > 0) {
-                document.getElementById('completed-habits').classList.remove('hidden');
+function displayTodaysHabits() {
+    fetch("/get_todays_habits")
+    .then(response => response.json())
+    .then(todays_habits => {
+        for (let habit of todays_habits) {
+            const habitDisplay = new DailyHabit(habit['id']);
+            console.log(`${habit.name}: ${habit.completion}`)
+            if (habit['completion']) {
+                habitDisplay.displayCompletedHabit(habit['name'], habit['completion']['completion_notes']);
+            }
+            else {
+                habitDisplay.displayHabit();
             }
         }
-    });
-});
+    })
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    displayTodaysHabits();
+})

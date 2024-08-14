@@ -1,7 +1,8 @@
 from flask import Blueprint, request, jsonify
 from flask_login import current_user
+from sqlalchemy import Date, func, desc
 from .models import Habit, HabitCompletion
-from .utils import weekday_from_date, weekday_no_from_str, habit_class_to_dict
+from .utils import habit_completion_class_to_dict, weekday_str_from_no, weekday_no_from_str, habit_class_to_dict
 from datetime import datetime, timedelta
 
 habit_control = Blueprint("habit_routes", __name__)
@@ -123,13 +124,14 @@ def get_all_habits():
     habit_list = [habit_class_to_dict(habit) for habit in habits]
     return jsonify(habit_list)
 
+
 @habit_control.route("/get_last_completed")
 def get_last_completed():
     habit_id = validate_habit_id()
     if habit_id[1] != 200: # Check status code
         return habit_id
     
-    habit = Habit.query.get(habit)
+    habit = Habit.query.get(habit_id)
     
     last_completed = HabitCompletion.query.filter_by(habit_id=habit_id).order_by(HabitCompletion.date.desc()).first()
     
@@ -137,4 +139,35 @@ def get_last_completed():
         return jsonify(last_completed.date.isoformat())
     else:
         return jsonify(None)
-    
+
+
+@habit_control.route("/get_todays_habits")
+def get_todays_habits(): # Returns with completion data as well
+    todays_date = datetime.now().date()
+    todays_day = todays_date.weekday()
+    todays_habits = Habit.query.filter(Habit.days.like(f"%{weekday_str_from_no(todays_day)}%")).all()
+    print(datetime.now(), todays_date, func.date(datetime.now()), todays_date == func.date(datetime.now()))
+    todays_habits_data = []
+    for habit in todays_habits:
+        completion = HabitCompletion.query.filter(
+            HabitCompletion.habit_id == habit.id,
+            func.date(HabitCompletion.date) <= todays_date,
+        ).order_by(desc(HabitCompletion.date)).first()
+        print(habit.name, completion)
+        todays_habits_data.append({
+            **habit_class_to_dict(habit), 
+            'completion':  habit_completion_class_to_dict(completion) if completion is not None else None
+        })
+    return todays_habits_data
+
+
+@habit_control.route("/mark_habit_complete", methods=['POST'])
+def mark_habit_complete():
+    from . import db
+    args = request.json
+    habit_completion = HabitCompletion(habit_id=args['habit_id'],
+                                       date=datetime.fromisoformat(args['date']),
+                                       completion_notes=args['completion_notes'])
+    db.session.add(habit_completion)
+    db.session.commit()
+    return jsonify({"message": "Completion registered successfully", **args}), 200

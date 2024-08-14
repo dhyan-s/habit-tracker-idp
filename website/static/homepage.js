@@ -3,14 +3,10 @@ import {Habit, HabitDisplayManager} from "./habit.js";
 
 export const homepageHabitManager = new HabitDisplayManager(document.getElementsByClassName("card")[0], document.getElementById("content"));
 
-
 document.getElementById('clear-tasks').addEventListener('click', function() {
     const taskList = document.getElementById('todo-list');
     taskList.innerHTML = '';
 });
-
-
-
 function popUpForInfo() {
     Swal.fire({
         title: "<strong>Habit Details <u>example</u></strong>",
