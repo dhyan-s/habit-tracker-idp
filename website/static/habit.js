@@ -20,6 +20,8 @@ export class Habit {
         this.habitData = habitData;
         this.parentDiv = parentDiv;
 
+        this.exists = true;
+
         this.openHabitInfoPopup = this.openHabitInfoPopup.bind(this);
         this.deleteHabit = this.deleteHabit.bind(this);
 
@@ -79,6 +81,7 @@ export class Habit {
                         }
                     });
                     this.habitDiv.remove();
+                    this.exists = false;
                 })
                 .catch(error => {
                     Toast.fire({
@@ -112,11 +115,9 @@ export class Habit {
             confirmButtonText: `
                 Keep It Up!
             `,
-            confirmButtonAriaLabel: "Thumbs up, Keep It Up!",
             cancelButtonText: `
-                 Edit Habit!
+                 Edit Habit (Beta)
             `,
-            cancelButtonAriaLabel: "Edit Habit (Beta)",
             customClass: {
                 confirmButton: 'my-sweetalert-confirm-button ',
                 cancelButton: 'my-sweetalert-cancel-button'
@@ -208,7 +209,16 @@ export class HabitDisplayManager {
         this.habitList.push(habit);
     }
 
+    filterHabitList() {
+        for (habit of this.habitList) {
+            if (!habit.exists) {
+                this.habitList.splice(this.habitList.indexOf(habit), 1);
+            }
+        }
+    }
+
     getHabitClassById(id) {
+        this.filterHabitList();
         for (habit of this.habitList) {
             if (habit.habitData['id'] == id) {
                 return habit
@@ -216,7 +226,7 @@ export class HabitDisplayManager {
         }
     }
 
-    updateAllHabits() {for (habit of this.habitList) { habit.updateHabitData(); }}
-    showAllHabits() {for (habit of this.habitList) { habit.showHabitDiv(); }}
-    hideAllHabits() {for (habit of this.habitList) { habit.hideHabitDiv(); }}
+    updateAllHabits() {this.filterHabitList(); for (habit of this.habitList) { habit.updateHabitData(); }}
+    showAllHabits() {this.filterHabitList(); for (habit of this.habitList) { habit.showHabitDiv(); }}
+    hideAllHabits() {this.filterHabitList(); for (habit of this.habitList) { habit.hideHabitDiv(); }}
 }
