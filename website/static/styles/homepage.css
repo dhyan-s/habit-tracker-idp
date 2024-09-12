@@ -618,6 +618,7 @@ header ul {
     transition: transform 0.2s ease;
     font-family: Arial, Helvetica, sans-serif;
     max-height: 125px;
+    min-height: 125px;
     overflow: hidden;
 }
 
